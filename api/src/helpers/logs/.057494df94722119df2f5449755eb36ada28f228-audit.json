@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Users\\Admin\\Desktop\\xarerp-dashboard\\api\\src\\helpers\\logs\\.057494df94722119df2f5449755eb36ada28f228-audit.json",
+    "files": [
+        {
+            "date": 1726387224833,
+            "name": "C:\\Users\\Admin\\Desktop\\xarerp-dashboard\\api\\src\\helpers\\logs\\application-2024-09-15.log",
+            "hash": "97e121c4d2f915cd785fa968b9e4f847bd7d6441c412746c3a4ed3faf22d2ffe"
+        }
+    ],
+    "hashType": "sha256"
+}
