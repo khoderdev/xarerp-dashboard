@@ -6,7 +6,7 @@ const main = async () => {
   const store = await prisma.store.create({
     data: {
       name: "Main Store",
-      type: "Warehouse/Stock",
+      type: "INVENTORY_MANAGER",
     },
   });
 
@@ -14,7 +14,7 @@ const main = async () => {
     data: {
       name: "Admin",
       email: "admin@mail.com",
-      password: "$2a$10$zqgAMD5bVH5nnaN0NV7V6eYUjweRi4I7h1am3GpIwCAYrnWCuG4vO",
+      password: "$2y$10$TO6jeDN.B5UO.6odx7v2KOi8//w0HrfDm/mdbLiYU6mKstNV/4fT2",
       unity_id: store.id,
       position: "Administrator",
       permissions:
