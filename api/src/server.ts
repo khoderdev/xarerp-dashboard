@@ -98,7 +98,7 @@ server.use((req: Request, res: Response, next) => {
 
 server.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://inventory-manager-frontend.onrender.com",
     methods: "GET,POST,PUT,DELETE",
     allowedHeaders: "Content-Type,Authorization",
   })
