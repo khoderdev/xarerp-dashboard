@@ -141,6 +141,6 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
 
 server.use(errorHandler);
 
-server.listen(process.env.PORT, () =>
+server.listen(process.env.PORT || "1000", () =>
   logger.info(`Server is running on port ${process.env.PORT}`)
 );
