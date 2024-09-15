@@ -86,7 +86,7 @@ const ModalRegisters = ({
         dispatch({
           type: "REGISTER_CHANGE_ERROR",
           payload: {
-            error: "Ocorreu um erro.",
+            error: "An error occurred.",
           },
         });
         dispatch({
@@ -175,11 +175,10 @@ const ModalRegisters = ({
         <C.ButtonArea>
           {!state.modalRegisters.loadingRegister && (
             <C.Button
-              className={`${
-                state.modalRegisters.deletingRegister
+              className={`${state.modalRegisters.deletingRegister
                   ? "buttonDelete"
                   : "buttonSave"
-              }`}
+                }`}
               disabled={state.register.isSending}
               onClick={
                 state.modalRegisters.deletingRegister
@@ -187,7 +186,7 @@ const ModalRegisters = ({
                   : handleSubmit
               }
             >
-              {state.modalRegisters.deletingRegister ? "Excluir" : "Save"}
+              {state.modalRegisters.deletingRegister ? "Delete" : "Save"}
             </C.Button>
           )}
           <C.Button

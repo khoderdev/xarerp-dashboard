@@ -51,7 +51,7 @@ const Users = () => {
       },
       {
         key: "position",
-        title: "Área",
+        title: "Role",
         width: 280,
       },
       {
@@ -217,7 +217,7 @@ const Users = () => {
             state.modalRegisters.editingRegister
               ? "Editar usuário"
               : state.modalRegisters.deletingRegister
-              ? "Excluir usuário"
+              ? "Delete usuário"
               : "Cadastrar usuário"
           }
         >
@@ -250,7 +250,7 @@ const Users = () => {
               />
 
               <Select
-                label="Área"
+                label="Role"
                 dataOptions={dataOptionsArea}
                 value={position || ""}
                 onChange={(e: any) => setPosition(e.target.value)}

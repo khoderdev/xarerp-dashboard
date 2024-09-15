@@ -68,7 +68,7 @@ const Sales = () => {
         width: 380
       }
     ],
-    tableTitle: 'Sales cadastradas'
+    tableTitle: 'Registered Sales'
   }
 
   const handleNewSale = async () => {
@@ -296,7 +296,7 @@ const Sales = () => {
           endpoint={state.modalRegisters.editingRegister ? 'sales' : 'sales'}
           type={state.modalRegisters.editingRegister ? 'update' : state.modalRegisters.deletingRegister ? 'delete' : 'create'}
           dataKey="sale"
-          title={state.modalRegisters.editingRegister ? 'Editar venda' : state.modalRegisters.deletingRegister ? 'Excluir venda' : 'Cadastrar venda'}
+          title={state.modalRegisters.editingRegister ? 'Editar venda' : state.modalRegisters.deletingRegister ? 'Delete venda' : 'Cadastrar venda'}
         >
           {state.modalRegisters.deletingRegister ? (
             <p>Esse processo é irreversível e excluirá também outros dados que estejam relacionados a esse registro. Deseja continuar?</p>

@@ -162,7 +162,7 @@ const Sellers = () => {
           endpoint={state.modalRegisters.editingRegister ? 'sellers' : 'sellers'}
           type={state.modalRegisters.editingRegister ? 'update' : state.modalRegisters.deletingRegister ? 'delete' : 'create'}
           dataKey="seller"
-          title={state.modalRegisters.editingRegister ? 'Editar vendedor' : state.modalRegisters.deletingRegister ? 'Excluir vendedor' : 'Cadastrar vendedor'}
+          title={state.modalRegisters.editingRegister ? 'Editar vendedor' : state.modalRegisters.deletingRegister ? 'Delete vendedor' : 'Cadastrar vendedor'}
         >
           {state.modalRegisters.deletingRegister ? (
             <p>Esse processo é irreversível e excluirá também outros dados que estejam relacionados a esse registro. Deseja continuar?</p>

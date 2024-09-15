@@ -141,7 +141,7 @@
 //           endpoint={state.modalRegisters.editingRegister ? 'carriers' : 'carriers'}
 //           type={state.modalRegisters.editingRegister ? 'update' : state.modalRegisters.deletingRegister ? 'delete' : 'create'}
 //           dataKey="carrier"
-//           title={state.modalRegisters.editingRegister ? 'Editar transportadora' : state.modalRegisters.deletingRegister ? 'Excluir transportadora' : 'Cadastrar transportadora'}
+//           title={state.modalRegisters.editingRegister ? 'Editar transportadora' : state.modalRegisters.deletingRegister ? 'Delete transportadora' : 'Cadastrar transportadora'}
 //         >
 //           {state.modalRegisters.deletingRegister ? (
 //             <p>Esse processo é irreversível e excluirá também outros dados que estejam relacionados a esse registro. Deseja continuar?</p>

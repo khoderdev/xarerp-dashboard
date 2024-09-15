@@ -59,11 +59,7 @@ export const validateToken = async (req: Request, res: Response) => {
   const [, token] = authHeaders.split(" ");
 
   try {
-    verify(
-      token,
-      process.env.SECRET_JWT ||
-        ("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MjYzODc5NjcsImV4cCI6MTcyNjM5MzM2Nywic3ViIjoiODI0MTViMDctNDA5NS00OTM1LThlZGUtMDFiNmM4MWFjYWE1In0.-ogFPqdfEf5N9HOunqSTkO2QWwxz2N9EPwMU-JvCHdY" as string)
-    );
+    verify(token, process.env.SECRET_JWT as string);
 
     const { sub }: any = decode(token);
     const user = await getUserService.findOne(sub);

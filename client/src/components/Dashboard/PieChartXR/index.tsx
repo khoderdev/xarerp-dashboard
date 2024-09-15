@@ -17,7 +17,7 @@ const PieChartXR = ({ data, dataKey, nameKey }: PieChartXRProps) => {
         <Pie
           dataKey={dataKey}
           nameKey={nameKey}
-          label={(data) => `${data.payload[nameKey]} - R$ ${data.payload[dataKey]}`}
+          label={(data) => `${data.payload[nameKey]} - $ ${data.payload[dataKey]}`}
           isAnimationActive={true}
           data={data}
           cx="50%"

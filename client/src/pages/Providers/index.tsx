@@ -144,8 +144,8 @@ const Providers = () => {
             state.modalRegisters.editingRegister
               ? "Edit Supplier"
               : state.modalRegisters.deletingRegister
-              ? "Delete supplier"
-              : "Register supplier"
+              ? "Delete Supplier"
+              : "Register Supplier"
           }
         >
           {state.modalRegisters.deletingRegister ? (

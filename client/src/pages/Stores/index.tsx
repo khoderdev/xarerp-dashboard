@@ -61,7 +61,7 @@ const Stores = () => {
         width: 180
       }
     ],
-    tableTitle: 'Lojas cadastradas'
+    tableTitle: 'Registered stores'
   }
 
   const handleNewStore = () => {

@@ -69,7 +69,7 @@ const Checkbox = ({ title, roles }: CheckBoxProps) => {
             type="checkbox"
             onChange={handleChange}
           />
-          <C.Title>Excluir</C.Title>
+          <C.Title>Delete</C.Title>
         </C.Role>
       </C.Roles>
     </C.Container>

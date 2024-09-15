@@ -39,7 +39,7 @@ const Tickets = () => {
     tableHeads: [
       {
         key: 'title',
-        title: 'Título',
+        title: 'Title',
         width: 480
       },
       {
@@ -172,21 +172,21 @@ const Tickets = () => {
           endpoint={state.modalRegisters.editingRegister ? 'tickets' : 'tickets'}
           type={state.modalRegisters.editingRegister ? 'update' : state.modalRegisters.deletingRegister ? 'delete' : 'create'}
           dataKey="ticket"
-          title={state.modalRegisters.editingRegister ? 'Editar ticket' : state.modalRegisters.deletingRegister ? 'Excluir ticket' : 'Cadastrar ticket'}
+          title={state.modalRegisters.editingRegister ? 'Editar ticket' : state.modalRegisters.deletingRegister ? 'Delete ticket' : 'Register ticket'}
         >
           {state.modalRegisters.deletingRegister ? (
             <p>Esse processo é irreversível e excluirá também outros dados que estejam relacionados a esse registro. Deseja continuar?</p>
           ) : (
             <>
               <Input
-                label="Título"
-                placeholder="Solicitar produto"
+                label="Title"
+                placeholder="Request product"
                 value={title}
                 onChange={(e: any) => setTitle(e.target.value)} />
 
               <Input
                 label="Description"
-                placeholder="X unidades do produto Y"
+                placeholder="X units of product Y"
                 value={description}
                 onChange={(e: any) => setDescription(e.target.value)} />
 

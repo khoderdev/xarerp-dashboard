@@ -64,7 +64,7 @@ const Purchases = () => {
         width: 380
       }
     ],
-    tableTitle: 'Compras cadastradas'
+    tableTitle: 'Registered purchases'
   }
 
   const handleNewPurchase = async () => {
@@ -236,7 +236,7 @@ const Purchases = () => {
           endpoint={state.modalRegisters.editingRegister ? 'purchases' : 'purchases'}
           type={state.modalRegisters.editingRegister ? 'update' : state.modalRegisters.deletingRegister ? 'delete' : 'create'}
           dataKey="purchase"
-          title={state.modalRegisters.editingRegister ? 'Editar compra' : state.modalRegisters.deletingRegister ? 'Excluir compra' : 'Cadastrar compra'}
+          title={state.modalRegisters.editingRegister ? 'Editar compra' : state.modalRegisters.deletingRegister ? 'Delete compra' : 'Cadastrar compra'}
         >
           {state.modalRegisters.deletingRegister ? (
             <p>Esse processo é irreversível e excluirá também outros dados que estejam relacionados a esse registro. Deseja continuar?</p>
