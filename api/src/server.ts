@@ -35,7 +35,9 @@ server.use(express.urlencoded({ extended: true }));
 server.get("/ping", (req: Request, res: Response) => res.json({ pong: true }));
 server.post("/login", authenticateUserController.authenticate);
 server.post("/validate", validateToken);
-
+server.get("/public-info", (req: Request, res: Response) => {
+  res.json({ message: "This is a public route, no authentication required!" });
+});
 server.use(ensureAuthenticated());
 server.use(apiRoutes);
 
