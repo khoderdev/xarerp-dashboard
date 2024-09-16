@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 import * as C from './styles';
-import { NotificationsNone } from '@material-ui/icons';
+import { NotificationsNone } from '@mui/icons-material';
 
 const Notifications = () => {
   const { notifications } = useContext(ThemeContext);

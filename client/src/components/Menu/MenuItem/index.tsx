@@ -17,7 +17,7 @@ import {
   MonetizationOn,
   SupervisedUserCircle,
   Help,
-} from '@material-ui/icons';
+} from '@mui/icons-material';
 
 type MenuItemProps = {
   title: string;

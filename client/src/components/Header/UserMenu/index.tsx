@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect, useRef } from "react";
 import { AuthContext } from "../../../contexts/auth/AuthContext";
 import { ThemeContext } from "styled-components";
 import * as C from "./styles";
-import { ArrowDropDown } from "@material-ui/icons";
+import { ArrowDropDown } from "@mui/icons-material";
 import ProfilePic from "../../../assets/profile.png";
 
 import SwitcherTheme from "../../SwitcherTheme";

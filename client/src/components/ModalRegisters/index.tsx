@@ -4,7 +4,7 @@ import { useApi } from "../../hooks/useApi";
 import { useCleanup } from "../../hooks/useCleanup";
 import { ThemeContext } from "styled-components";
 import * as C from "./styles";
-import { Close } from "@material-ui/icons";
+import { Close } from "@mui/icons-material";
 
 import Loading from "../Loading";
 import Error from "../Error";

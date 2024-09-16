@@ -4,7 +4,7 @@ import { GlobalContext } from "../../contexts/GlobalContext";
 import { ThemeContext } from 'styled-components';
 import { useWindowSize } from "../../hooks/useResize";
 import * as C from './styles';
-import { Menu } from '@material-ui/icons';
+import { Menu } from '@mui/icons-material';
 
 import SwitcherTheme from "../SwitcherTheme";
 import UserMenu from "./UserMenu";

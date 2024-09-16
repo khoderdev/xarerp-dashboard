@@ -5,7 +5,7 @@ import { useWindowSize } from "../../hooks/useResize";
 import { ThemeContext } from "styled-components";
 import * as C from "./styles";
 
-import { Menu as MenuIcon, MenuOpen } from "@material-ui/icons";
+import { Menu as MenuIcon, MenuOpen } from "@mui/icons-material";
 
 import MenuItem from "./MenuItem";
 

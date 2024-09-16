@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { GlobalContext } from '../../contexts/GlobalContext';
 import { ThemeContext } from 'styled-components';
 import * as C from './styles';
-import { Brightness2, WbSunny } from '@material-ui/icons';
+import { Brightness2, WbSunny } from '@mui/icons-material';
 
 const SwitcherTheme = ({ noAuth }: { noAuth?: string }) => {
   const { switcher } = useContext(ThemeContext);

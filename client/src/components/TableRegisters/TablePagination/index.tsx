@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { GlobalContext } from '../../../contexts/GlobalContext';
 import { ThemeContext } from 'styled-components';
 import * as C from './styles';
-import { ArrowBackIos, ArrowForwardIos } from '@material-ui/icons';
+import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material'; 
 
 const TablePagination = () => {
   const { table_registers } = useContext(ThemeContext);

@@ -4,7 +4,7 @@ import { GlobalContext } from "../../contexts/GlobalContext";
 import { useApi } from "../../hooks/useApi";
 import { useCleanup } from "../../hooks/useCleanup";
 import * as C from "./styles";
-import { Add } from "@material-ui/icons";
+import { Add } from "@mui/icons-material";
 
 import Search from "../Search";
 import TableRegisters from "../../components/TableRegisters";
@@ -87,7 +87,7 @@ const CommonSections = ({ data, handleNew }: CommonSectionsProps) => {
         });
       }
     })();
-  }, [api, clearOnPageChange, data.endpoint, data.key, data.tableHeads, data.tableTitle, dispatch]);
+  }, []);
 
   useEffect(() => {
     if (!state.tableRegisters.initialFetch) {

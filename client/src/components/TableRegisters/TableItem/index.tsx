@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../contexts/auth/AuthContext';
 import { GlobalContext } from '../../../contexts/GlobalContext';
 import * as C from './styles';
-import { Edit, Delete } from '@material-ui/icons';
+import { Edit, Delete } from '@mui/icons-material';
 
 type ItemProps = {
   [key: string]: any
