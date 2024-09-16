@@ -1,0 +1,124 @@
+2024-09-15T22:43:55.779Z [info]: Server is running on port 5432
+2024-09-15T22:44:30.094Z [info]: Server is running on port 3333
+2024-09-15T22:44:45.486Z [info]: GET /api/ 401 8ms
+2024-09-15T22:44:45.652Z [info]: GET /favicon.ico 401 2ms
+2024-09-15T22:46:42.575Z [info]: OPTIONS /login 204 2ms
+2024-09-15T22:46:42.659Z [info]: POST /login 500 78ms
+2024-09-15T22:47:01.213Z [info]: OPTIONS /login 204 1ms
+2024-09-15T22:47:01.233Z [info]: POST /login 500 17ms
+2024-09-15T22:47:06.239Z [info]: OPTIONS /login 204 1ms
+2024-09-15T22:47:06.267Z [info]: POST /login 500 20ms
+2024-09-15T22:48:35.826Z [info]: Server is running on port 3333
+2024-09-15T22:48:53.197Z [info]: OPTIONS /login 204 8ms
+2024-09-15T22:48:54.647Z [info]: POST /login 500 1447ms
+2024-09-15T22:50:53.281Z [info]: Server is running on port 3333
+2024-09-15T22:51:01.289Z [info]: OPTIONS /login 204 5ms
+2024-09-15T22:51:04.107Z [info]: POST /login 400 2816ms
+2024-09-15T22:51:33.534Z [info]: OPTIONS /login 204 0ms
+2024-09-15T22:51:33.824Z [info]: POST /login 400 284ms
+2024-09-15T22:52:51.904Z [info]: OPTIONS /login 204 1ms
+2024-09-15T22:52:52.167Z [info]: POST /login 400 261ms
+2024-09-15T22:54:12.271Z [info]: GET /api/ 401 2ms
+2024-09-15T22:54:12.340Z [info]: GET /favicon.ico 401 1ms
+2024-09-15T22:57:29.234Z [info]: GET /api/ 401 2ms
+2024-09-15T22:57:29.313Z [info]: GET /favicon.ico 401 1ms
+2024-09-15T22:58:05.971Z [info]: GET /api/ 401 1ms
+2024-09-15T22:58:06.039Z [info]: GET /favicon.ico 401 2ms
+2024-09-15T22:58:06.796Z [info]: GET /api/ 401 3ms
+2024-09-15T22:58:06.869Z [info]: GET /favicon.ico 401 1ms
+2024-09-15T22:58:06.938Z [info]: GET /api/ 401 1ms
+2024-09-15T22:58:07.009Z [info]: GET /favicon.ico 401 1ms
+2024-09-15T23:03:26.700Z [info]: OPTIONS /login 204 1ms
+2024-09-15T23:03:28.410Z [info]: POST /login 400 1706ms
+2024-09-15T23:07:15.858Z [error]: Authentication failed: invalid signature, Stack: JsonWebTokenError: invalid signature
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:133:19
+    at getSecret (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:90:14)
+    at module.exports (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:94:10)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:17:13
+    at Generator.next (<anonymous>)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:4:12)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:7:68
+    at Layer.handle [as handle_request] (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\express\lib\router\layer.js:95:5)
+2024-09-15T23:07:15.861Z [info]: POST /v1/users 401 16ms
+2024-09-15T23:07:31.977Z [error]: Authentication failed: invalid signature, Stack: JsonWebTokenError: invalid signature
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:133:19
+    at getSecret (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:90:14)
+    at module.exports (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:94:10)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:17:13
+    at Generator.next (<anonymous>)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:4:12)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:7:68
+    at Layer.handle [as handle_request] (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\express\lib\router\layer.js:95:5)
+2024-09-15T23:07:31.980Z [info]: POST /v1/users 401 4ms
+2024-09-15T23:07:51.576Z [error]: Authentication failed: invalid signature, Stack: JsonWebTokenError: invalid signature
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:133:19
+    at getSecret (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:90:14)
+    at module.exports (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:94:10)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:17:13
+    at Generator.next (<anonymous>)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:4:12)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:7:68
+    at Layer.handle [as handle_request] (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\express\lib\router\layer.js:95:5)
+2024-09-15T23:07:51.578Z [info]: POST /v1/users 401 3ms
+2024-09-16T00:00:38.750Z [info]: Server is running on port 3333
+2024-09-16T00:01:19.372Z [error]: Authentication failed: invalid signature, Stack: JsonWebTokenError: invalid signature
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:133:19
+    at getSecret (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:90:14)
+    at module.exports (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:94:10)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:17:13
+    at Generator.next (<anonymous>)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:4:12)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:7:68
+    at Layer.handle [as handle_request] (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\express\lib\router\layer.js:95:5)
+2024-09-16T00:01:19.380Z [info]: GET /v1/categories/get 401 41ms
+2024-09-16T00:03:02.299Z [error]: Authentication failed: invalid signature, Stack: JsonWebTokenError: invalid signature
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:133:19
+    at getSecret (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:90:14)
+    at module.exports (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:94:10)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:17:13
+    at Generator.next (<anonymous>)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:4:12)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:7:68
+    at Layer.handle [as handle_request] (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\express\lib\router\layer.js:95:5)
+2024-09-16T00:03:02.301Z [info]: GET /v1/categories/get 401 4ms
+2024-09-16T00:03:31.805Z [error]: Authentication failed: invalid signature, Stack: JsonWebTokenError: invalid signature
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:133:19
+    at getSecret (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:90:14)
+    at module.exports (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:94:10)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:17:13
+    at Generator.next (<anonymous>)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:4:12)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:7:68
+    at Layer.handle [as handle_request] (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\express\lib\router\layer.js:95:5)
+2024-09-16T00:03:31.807Z [info]: GET /api/v1/categories/get 401 3ms
+2024-09-16T00:45:36.420Z [info]: Server is running on port 3333
+2024-09-16T00:45:47.029Z [info]: GET / 200 11ms
+2024-09-16T00:45:47.201Z [info]: GET /favicon.ico 401 3ms
+2024-09-16T00:52:38.492Z [info]: OPTIONS /login 204 3ms
+2024-09-16T00:52:38.692Z [info]: POST /login 400 194ms
+2024-09-16T00:57:04.467Z [info]: OPTIONS /login 204 0ms
+2024-09-16T00:57:04.584Z [info]: POST /login 200 112ms
+2024-09-16T00:57:04.633Z [info]: OPTIONS /v1/dashboard/7 204 1ms
+2024-09-16T00:57:04.970Z [info]: OPTIONS /validate 204 4ms
+2024-09-16T00:57:04.980Z [info]: POST /validate 200 7ms
+2024-09-16T00:57:05.094Z [info]: GET /v1/dashboard/7 200 12ms
+2024-09-16T00:58:15.124Z [info]: OPTIONS /validate 204 2ms
+2024-09-16T00:58:15.135Z [info]: POST /validate 200 5ms
+2024-09-16T00:58:15.217Z [info]: OPTIONS /v1/dashboard/7 204 1ms
+2024-09-16T00:58:15.330Z [info]: GET /v1/dashboard/7 304 28ms
+2024-09-16T01:13:35.854Z [info]: GET /v1 401 1ms
+2024-09-16T01:13:35.958Z [info]: GET /favicon.ico 401 2ms
+2024-09-16T01:13:39.411Z [info]: GET / 304 1ms
+2024-09-16T01:13:39.486Z [info]: GET /favicon.ico 401 1ms

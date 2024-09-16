@@ -230,14 +230,14 @@ const Users = () => {
             <>
               <Input
                 label="Name"
-                placeholder="Usuário 1"
+                placeholder="User 1"
                 value={name}
                 onChange={(e: any) => setName(e.target.value)}
               />
 
               <Input
                 label="E-mail"
-                placeholder="usuario1@email.com"
+                placeholder="user@email.com"
                 value={email}
                 onChange={(e: any) => setEmail(e.target.value)}
               />

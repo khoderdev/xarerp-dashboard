@@ -8,7 +8,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://inventory-manager-6w3b.onrender.com",
+  // baseURL: "http://localhost:3333",
+  baseURL: "https://inventory-manager-backend-egws.onrender.com",
 });
 
 // Function to set the Bearer token

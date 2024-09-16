@@ -30,10 +30,10 @@ const getCategoryController = __importStar(require("../modules/categories/contro
 const updateCategoryController = __importStar(require("../modules/categories/controllers/updateCategoryController"));
 const deleteCategoryController = __importStar(require("../modules/categories/controllers/deleteCategoryController"));
 const categoriesRouter = (0, express_1.Router)();
-categoriesRouter.post('/', (0, ensurePermission_1.can)("create_category"), createCategoryController.create);
-categoriesRouter.get('/', (0, ensurePermission_1.can)("view_category"), getCategoryController.getAll);
-categoriesRouter.get('/get/', (0, ensurePermission_1.can)("get_categories"), getCategoryController.getRegisters);
-categoriesRouter.get('/:id', (0, ensurePermission_1.can)("view_category"), getCategoryController.getOne);
-categoriesRouter.put('/:id', (0, ensurePermission_1.can)("update_category"), updateCategoryController.updateOne);
-categoriesRouter.delete('/:id', (0, ensurePermission_1.can)("delete_category"), deleteCategoryController.deleteOne);
+categoriesRouter.post("/", (0, ensurePermission_1.can)("create_category"), createCategoryController.create);
+categoriesRouter.get("/", (0, ensurePermission_1.can)("view_category"), getCategoryController.getAll);
+categoriesRouter.get("/get/", getCategoryController.getRegisters);
+categoriesRouter.get("/:id", (0, ensurePermission_1.can)("view_category"), getCategoryController.getOne);
+categoriesRouter.put("/:id", (0, ensurePermission_1.can)("update_category"), updateCategoryController.updateOne);
+categoriesRouter.delete("/:id", (0, ensurePermission_1.can)("delete_category"), deleteCategoryController.deleteOne);
 exports.default = categoriesRouter;

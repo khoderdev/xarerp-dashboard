@@ -1,49 +1,77 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
+var __createBinding =
+  (this && this.__createBinding) ||
+  (Object.create
+    ? function (o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        var desc = Object.getOwnPropertyDescriptor(m, k);
+        if (
+          !desc ||
+          ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)
+        ) {
+          desc = {
+            enumerable: true,
+            get: function () {
+              return m[k];
+            },
+          };
+        }
+        Object.defineProperty(o, k2, desc);
+      }
+    : function (o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        o[k2] = m[k];
+      });
+var __setModuleDefault =
+  (this && this.__setModuleDefault) ||
+  (Object.create
+    ? function (o, v) {
+        Object.defineProperty(o, "default", { enumerable: true, value: v });
+      }
+    : function (o, v) {
+        o["default"] = v;
+      });
+var __importStar =
+  (this && this.__importStar) ||
+  function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null)
+      for (var k in mod)
+        if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k))
+          __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
+  };
+var __importDefault =
+  (this && this.__importDefault) ||
+  function (mod) {
+    return mod && mod.__esModule ? mod : { default: mod };
+  };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const cors_1 = __importDefault(require("cors"));
 const ensureAuthenticated_1 = require("./middlewares/auth/ensureAuthenticated");
-const authenticateUserController = __importStar(require("./modules/users/controllers/authenticateUserController"));
+const authenticateUserController = __importStar(
+  require("./modules/users/controllers/authenticateUserController")
+);
 const routes_1 = __importDefault(require("./routes"));
 const logger_1 = __importDefault(require("./helpers/logger"));
 dotenv_1.default.config();
 const server = (0, express_1.default)();
-const morganFormat = ":method :url :status :res[content-length] - :response-time ms";
+const morganFormat =
+  ":method :url :status :res[content-length] - :response-time ms";
 // Middleware to log request details
 server.use((req, res, next) => {
-    const start = Date.now();
-    res.on("finish", () => {
-        const duration = Date.now() - start;
-        logger_1.default.info(`${req.method} ${req.originalUrl} ${res.statusCode} ${duration}ms`);
-    });
-    next();
+  const start = Date.now();
+  res.on("finish", () => {
+    const duration = Date.now() - start;
+    logger_1.default.info(
+      `${req.method} ${req.originalUrl} ${res.statusCode} ${duration}ms`
+    );
+  });
+  next();
 });
 server.use((0, cors_1.default)());
 server.use(express_1.default.json());
@@ -51,18 +79,23 @@ server.use(express_1.default.urlencoded({ extended: true }));
 server.get("/ping", (req, res) => res.json({ pong: true }));
 server.post("/login", authenticateUserController.authenticate);
 server.post("/validate", ensureAuthenticated_1.validateToken);
+server.get("/", (req, res) => {
+  res.json({ message: "This is a public route, no authentication required!" });
+});
 server.use((0, ensureAuthenticated_1.ensureAuthenticated)());
 server.use(routes_1.default);
 server.use((req, res) => {
-    logger_1.default.warn(`404 Not Found: ${req.method} ${req.originalUrl}`);
-    res.status(404).json({ error: "Not found" });
+  logger_1.default.warn(`404 Not Found: ${req.method} ${req.originalUrl}`);
+  res.status(404).json({ error: "Not found" });
 });
 const errorHandler = (err, req, res, next) => {
-    logger_1.default.error(`Error: ${err.message}, Stack: ${err.stack}`);
-    res.status(500).json({ error: "Internal server error" });
+  logger_1.default.error(`Error: ${err.message}, Stack: ${err.stack}`);
+  res.status(500).json({ error: "Internal server error" });
 };
 server.use(errorHandler);
-server.listen(process.env.PORT, () => logger_1.default.info(`Server is running on port ${process.env.PORT}`));
+server.listen(process.env.PORT || 4444, () =>
+  logger_1.default.info(`Server is running on port ${process.env.PORT}`)
+);
 // import express, { Request, Response, ErrorRequestHandler } from "express";
 // import dotenv from "dotenv";
 // import cors from "cors";

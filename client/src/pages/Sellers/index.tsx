@@ -169,7 +169,7 @@ const Sellers = () => {
           ) : (
             <>
               <Select
-                label="Usuário"
+                label="User"
                 dataOptions={users}
                 value={user}
                 onChange={(e: any) => setUser(e.target.value)} />
