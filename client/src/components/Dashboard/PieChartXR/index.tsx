@@ -2,17 +2,28 @@ import { PieChart, Pie, ResponsiveContainer } from 'recharts';
 import { useContext } from "react";
 import { ThemeContext } from 'styled-components';
 
-type PieChartXRProps = {
-  data: any;
-  dataKey: string;
-  nameKey: string;
+// Define a type for the pie chart data structure
+interface PieChartData {
+  [key: string]: string | number;
 }
 
+type PieChartXRProps = {
+  data: PieChartData[];
+  dataKey: string;
+  nameKey: string;
+};
+
 const PieChartXR = ({ data, dataKey, nameKey }: PieChartXRProps) => {
-  const { dashboard } = useContext(ThemeContext);
+
+  // Use the ThemeContext with the defined structure for 'dashboard' theme properties
+  const { dashboard } = useContext(ThemeContext) as {
+    dashboard: {
+      reference_graphic_primary: string;
+    }
+  };
 
   return (
-    <ResponsiveContainer>
+    <ResponsiveContainer width="100%" height={260}>
       <PieChart>
         <Pie
           dataKey={dataKey}
@@ -27,7 +38,7 @@ const PieChartXR = ({ data, dataKey, nameKey }: PieChartXRProps) => {
         />
       </PieChart>
     </ResponsiveContainer>
-  )
-}
+  );
+};
 
 export default PieChartXR;

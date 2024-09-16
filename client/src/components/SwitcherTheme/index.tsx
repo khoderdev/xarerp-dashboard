@@ -4,11 +4,15 @@ import { ThemeContext } from 'styled-components';
 import * as C from './styles';
 import { Brightness2, WbSunny } from '@mui/icons-material';
 
-const SwitcherTheme = ({ noAuth }: { noAuth?: string }) => {
+type SwitcherThemeProps = {
+  noAuth?: string;
+};
+
+const SwitcherTheme = ({ noAuth }: SwitcherThemeProps) => {
   const { switcher } = useContext(ThemeContext);
   const { state, dispatch } = useContext(GlobalContext);
 
-  const handleChangeTheme = (type: string) => {
+  const handleChangeTheme = (type: 'dark' | 'light') => {
     dispatch({
       type: 'THEME_CHANGE_TYPE',
       payload: {
@@ -16,7 +20,7 @@ const SwitcherTheme = ({ noAuth }: { noAuth?: string }) => {
       }
     });
     localStorage.setItem('theme', type);
-  }
+  };
 
   return (
     <C.SwitcherContainer className={noAuth}>
@@ -34,6 +38,6 @@ const SwitcherTheme = ({ noAuth }: { noAuth?: string }) => {
       </C.SwitchButton>
     </C.SwitcherContainer>
   );
-}
+};
 
 export default SwitcherTheme;

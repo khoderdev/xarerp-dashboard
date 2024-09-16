@@ -4,28 +4,29 @@ import { ThemeContext } from "styled-components";
 import * as C from "./styles";
 import { ArrowDropDown } from "@mui/icons-material";
 import ProfilePic from "../../../assets/profile.png";
-
 import SwitcherTheme from "../../SwitcherTheme";
+
+// Define the structure for user_menu in ThemeContext
+type ThemeContextType = {
+  user_menu: {
+    icon: string;
+  };
+};
 
 const UserMenu = () => {
   const auth = useContext(AuthContext);
   const ref = useRef<HTMLDivElement | null>(null);
-  const { user_menu } = useContext(ThemeContext);
+  const { user_menu } = useContext(ThemeContext) as ThemeContextType;
   const [openedMenu, setOpenedMenu] = useState(false);
 
   useEffect(() => {
     const clickedOutside = (e: MouseEvent) => {
-      if (
-        openedMenu &&
-        ref.current &&
-        !ref.current.contains(e.target as HTMLDivElement)
-      ) {
+      if (openedMenu && ref.current && !ref.current.contains(e.target as Node)) {
         setOpenedMenu(false);
       }
     };
 
     document.addEventListener("mousedown", clickedOutside);
-
     return () => {
       document.removeEventListener("mousedown", clickedOutside);
     };

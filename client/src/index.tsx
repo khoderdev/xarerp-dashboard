@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client'; // Use createRoot from 'react-dom/clien
 import './index.css';
 
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './contexts/auth/AuthProvider';
 import { GlobalContextProvider } from './contexts/GlobalContext';
@@ -27,7 +26,6 @@ if (rootElement) {
     </React.StrictMode>
   );
 
-  reportWebVitals();
 } else {
   console.error("Root element not found");
 }

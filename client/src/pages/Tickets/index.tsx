@@ -1,19 +1,232 @@
+// import { useContext, useState, useEffect } from 'react';
+// import { GlobalContext } from '../../contexts/GlobalContext';
+// import { useApi } from '../../hooks/useApi';
+
+// import CommonSections from '../../components/CommonSections';
+
+// import ModalRegisters from '../../components/ModalRegisters';
+// import Input from '../../components/ModalRegisters/Input';
+// import Select from '../../components/ModalRegisters/Select';
+
+// import { CreateTicket } from '../../types/Ticket';
+// import { TableRegisters } from '../../types/TableRegisters';
+
+// type Options = {
+//   name: string;
+//   value: string;
+// }
+
+// const Tickets = () => {
+//   const api = useApi();
+//   const { state, dispatch } = useContext(GlobalContext);
+
+//   const [stores, setStores] = useState<Options[]>([]);
+
+//   const [title, setTitle] = useState('');
+//   const [description, setDescription] = useState('');
+//   const [unity, setUnity] = useState('');
+
+//   const dataProps: CreateTicket = {
+//     title,
+//     description,
+//     unity
+//   }
+
+//   const dataTable: TableRegisters = {
+//     endpoint: "tickets",
+//     key: "tickets",
+//     roles: ['create_ticket', 'update_ticket', 'delete_ticket'],
+//     tableHeads: [
+//       {
+//         key: 'title',
+//         title: 'Title',
+//         width: 480
+//       },
+//       {
+//         key: 'description',
+//         title: 'Description',
+//         width: 280
+//       },
+//       {
+//         key: 'status',
+//         title: 'Status',
+//         width: 280
+//       },
+//       {
+//         key: 'actions',
+//         title: 'Actions',
+//         width: 380
+//       }
+//     ],
+//     tableTitle: 'Registered tickets'
+//   }
+
+//   const handleNewTicket = async () => {
+//     setTitle('');
+//     setDescription('');
+//     setUnity('');
+
+//     setStores([]);
+
+//     const resultStores = await api.getRegisters('stores', Number(0));
+
+//     if (resultStores.stores) {
+//       resultStores.stores[1].map((item: { name: string; id: string; }, index: any) => (
+//         setStores(oldArray => [...oldArray,
+//         {
+//           name: item.name,
+//           value: item.id
+//         }
+//         ])
+//       ));
+//     }
+
+//     dispatch({
+//       type: 'MODALREGISTERS_SET_LOADINGREGISTER',
+//       payload: {
+//         loadingRegister: false
+//       }
+//     })
+//     dispatch({
+//       type: 'MODALREGISTERS_SET_OPENEDMODAL',
+//       payload: {
+//         openedModal: true
+//       }
+//     });
+//   }
+
+//   useEffect(() => {
+//     dispatch({
+//       type: 'REGISTER_CHANGE_HASERROR',
+//       payload: {
+//         hasError: false
+//       }
+//     });
+//     dispatch({
+//       type: 'REGISTER_CHANGE_PROPS',
+//       payload: {
+//         props: { ...dataProps }
+//       }
+//     });
+
+//     if (
+//       title !== '' &&
+//       description !== '' &&
+//       unity !== ''
+//     ) {
+//       dispatch({
+//         type: 'REGISTER_CHANGE_ISREADY',
+//         payload: {
+//           isReady: true
+//         }
+//       });
+//     } else {
+//       dispatch({
+//         type: 'REGISTER_CHANGE_ISREADY',
+//         payload: {
+//           isReady: false
+//         }
+//       });
+//       dispatch({
+//         type: 'REGISTER_CHANGE_ERROR',
+//         payload: {
+//           error: 'You must fill all fields above.'
+//         }
+//       });
+//     }
+//     // eslint-disable-next-line react-hooks/exhaustive-deps
+//   }, [title, description, unity]);
+
+//   useEffect(() => {
+//     if (state.modalRegisters.editingRegister && state.modalRegisters.registerEditingId !== '') {
+//       (async () => {
+//         setStores([]);
+
+//         const resultStores = await api.getRegisters('stores', Number(0));
+
+//         if (resultStores.stores) {
+//           resultStores.stores[1].map((item: { name: string; id: string; }, index: any) => (
+//             setStores(oldArray => [...oldArray,
+//             {
+//               name: item.name,
+//               value: item.id
+//             }
+//             ])
+//           ));
+//         }
+//       })();
+
+//       setTitle(state.register.props.title);
+//       setDescription(state.register.props.description);
+//       setUnity(state.register.props.unity_id);
+//     }
+//     // eslint-disable-next-line react-hooks/exhaustive-deps
+//   }, [state.modalRegisters.editingRegister, state.modalRegisters.registerEditingId]);
+
+//   return (
+//     <>
+//       <CommonSections data={dataTable} handleNew={handleNewTicket} />
+
+//       {state.modalRegisters.openedModal &&
+//         <ModalRegisters
+//           endpoint={state.modalRegisters.editingRegister ? 'tickets' : 'tickets'}
+//           type={state.modalRegisters.editingRegister ? 'update' : state.modalRegisters.deletingRegister ? 'delete' : 'create'}
+//           dataKey="ticket"
+//           title={state.modalRegisters.editingRegister ? 'Editar ticket' : state.modalRegisters.deletingRegister ? 'Delete ticket' : 'Register ticket'}
+//         >
+//           {state.modalRegisters.deletingRegister ? (
+//             <p>Esse processo é irreversível e excluirá também outros dados que estejam relacionados a esse registro. Deseja continuar?</p>
+//           ) : (
+//             <>
+//               <Input
+//                 label="Title"
+//                 placeholder="Request product"
+//                 value={title}
+//                 onChange={(e: any) => setTitle(e.target.value)} />
+
+//               <Input
+//                 label="Description"
+//                 placeholder="X units of product Y"
+//                 value={description}
+//                 onChange={(e: any) => setDescription(e.target.value)} />
+
+//               <Select
+//                 label="Store"
+//                 dataOptions={stores}
+//                 value={unity}
+//                 onChange={(e: any) => setUnity(e.target.value)} />
+//             </>
+//           )}
+//         </ModalRegisters>
+//       }
+
+//     </>
+//   );
+// }
+
+// export default Tickets;
 import { useContext, useState, useEffect } from 'react';
 import { GlobalContext } from '../../contexts/GlobalContext';
 import { useApi } from '../../hooks/useApi';
-
 import CommonSections from '../../components/CommonSections';
-
 import ModalRegisters from '../../components/ModalRegisters';
 import Input from '../../components/ModalRegisters/Input';
 import Select from '../../components/ModalRegisters/Select';
-
 import { CreateTicket } from '../../types/Ticket';
 import { TableRegisters } from '../../types/TableRegisters';
 
 type Options = {
   name: string;
   value: string;
+};
+
+interface StoreItem {
+  name: string;
+  id: string;
+}
+
+interface ResultStores {
+  stores: [any, StoreItem[]]; // Adjust if necessary
 }
 
 const Tickets = () => {
@@ -21,7 +234,6 @@ const Tickets = () => {
   const { state, dispatch } = useContext(GlobalContext);
 
   const [stores, setStores] = useState<Options[]>([]);
-
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [unity, setUnity] = useState('');
@@ -29,145 +241,87 @@ const Tickets = () => {
   const dataProps: CreateTicket = {
     title,
     description,
-    unity
-  }
+    unity,
+  };
 
   const dataTable: TableRegisters = {
     endpoint: "tickets",
     key: "tickets",
     roles: ['create_ticket', 'update_ticket', 'delete_ticket'],
     tableHeads: [
-      {
-        key: 'title',
-        title: 'Title',
-        width: 480
-      },
-      {
-        key: 'description',
-        title: 'Description',
-        width: 280
-      },
-      {
-        key: 'status',
-        title: 'Status',
-        width: 280
-      },
-      {
-        key: 'actions',
-        title: 'Actions',
-        width: 380
-      }
+      { key: 'title', title: 'Title', width: 480 },
+      { key: 'description', title: 'Description', width: 280 },
+      { key: 'status', title: 'Status', width: 280 },
+      { key: 'actions', title: 'Actions', width: 380 },
     ],
-    tableTitle: 'Registered tickets'
-  }
+    tableTitle: 'Registered tickets',
+  };
 
   const handleNewTicket = async () => {
     setTitle('');
     setDescription('');
     setUnity('');
-
     setStores([]);
 
-    const resultStores = await api.getRegisters('stores', Number(0));
+    try {
+      const resultStores: ResultStores = await api.getRegisters('stores', Number(0));
 
-    if (resultStores.stores) {
-      resultStores.stores[1].map((item: { name: string; id: string; }, index: any) => (
-        setStores(oldArray => [...oldArray,
-        {
+      if (resultStores.stores) {
+        setStores(resultStores.stores[1].map((item) => ({
           name: item.name,
-          value: item.id
-        }
-        ])
-      ));
-    }
+          value: item.id,
+        })));
+      }
 
-    dispatch({
-      type: 'MODALREGISTERS_SET_LOADINGREGISTER',
-      payload: {
-        loadingRegister: false
-      }
-    })
-    dispatch({
-      type: 'MODALREGISTERS_SET_OPENEDMODAL',
-      payload: {
-        openedModal: true
-      }
-    });
-  }
+      dispatch({ type: 'MODALREGISTERS_SET_LOADINGREGISTER', payload: { loadingRegister: false } });
+      dispatch({ type: 'MODALREGISTERS_SET_OPENEDMODAL', payload: { openedModal: true } });
+    } catch (error) {
+      console.error("Failed to fetch stores:", error);
+    }
+  };
 
   useEffect(() => {
-    dispatch({
-      type: 'REGISTER_CHANGE_HASERROR',
-      payload: {
-        hasError: false
-      }
-    });
-    dispatch({
-      type: 'REGISTER_CHANGE_PROPS',
-      payload: {
-        props: { ...dataProps }
-      }
-    });
+    dispatch({ type: 'REGISTER_CHANGE_HASERROR', payload: { hasError: false } });
+    dispatch({ type: 'REGISTER_CHANGE_PROPS', payload: { props: { ...dataProps } } });
 
-    if (
-      title !== '' &&
-      description !== '' &&
-      unity !== ''
-    ) {
-      dispatch({
-        type: 'REGISTER_CHANGE_ISREADY',
-        payload: {
-          isReady: true
-        }
-      });
+    if (title && description && unity) {
+      dispatch({ type: 'REGISTER_CHANGE_ISREADY', payload: { isReady: true } });
     } else {
-      dispatch({
-        type: 'REGISTER_CHANGE_ISREADY',
-        payload: {
-          isReady: false
-        }
-      });
-      dispatch({
-        type: 'REGISTER_CHANGE_ERROR',
-        payload: {
-          error: 'You must fill all fields above.'
-        }
-      });
+      dispatch({ type: 'REGISTER_CHANGE_ISREADY', payload: { isReady: false } });
+      dispatch({ type: 'REGISTER_CHANGE_ERROR', payload: { error: 'You must fill all fields above.' } });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [title, description, unity]);
+  }, [title, description, unity, dispatch, dataProps]);
 
   useEffect(() => {
-    if (state.modalRegisters.editingRegister && state.modalRegisters.registerEditingId !== '') {
+    if (state.modalRegisters.editingRegister && state.modalRegisters.registerEditingId) {
       (async () => {
         setStores([]);
 
-        const resultStores = await api.getRegisters('stores', Number(0));
+        try {
+          const resultStores: ResultStores = await api.getRegisters('stores', Number(0));
 
-        if (resultStores.stores) {
-          resultStores.stores[1].map((item: { name: string; id: string; }, index: any) => (
-            setStores(oldArray => [...oldArray,
-            {
+          if (resultStores.stores) {
+            setStores(resultStores.stores[1].map((item) => ({
               name: item.name,
-              value: item.id
-            }
-            ])
-          ));
+              value: item.id,
+            })));
+          }
+
+          setTitle(state.register.props.title);
+          setDescription(state.register.props.description);
+          setUnity(state.register.props.unity_id);
+        } catch (error) {
+          console.error("Failed to fetch stores:", error);
         }
       })();
-
-      setTitle(state.register.props.title);
-      setDescription(state.register.props.description);
-      setUnity(state.register.props.unity_id);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.modalRegisters.editingRegister, state.modalRegisters.registerEditingId]);
+  }, [state.modalRegisters.editingRegister, state.modalRegisters.registerEditingId, api, state.register.props]);
 
   return (
     <>
       <CommonSections data={dataTable} handleNew={handleNewTicket} />
 
-      {state.modalRegisters.openedModal &&
+      {state.modalRegisters.openedModal && (
         <ModalRegisters
           endpoint={state.modalRegisters.editingRegister ? 'tickets' : 'tickets'}
           type={state.modalRegisters.editingRegister ? 'update' : state.modalRegisters.deletingRegister ? 'delete' : 'create'}
@@ -182,26 +336,26 @@ const Tickets = () => {
                 label="Title"
                 placeholder="Request product"
                 value={title}
-                onChange={(e: any) => setTitle(e.target.value)} />
-
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
+              />
               <Input
                 label="Description"
                 placeholder="X units of product Y"
                 value={description}
-                onChange={(e: any) => setDescription(e.target.value)} />
-
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDescription(e.target.value)}
+              />
               <Select
                 label="Store"
                 dataOptions={stores}
                 value={unity}
-                onChange={(e: any) => setUnity(e.target.value)} />
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setUnity(e.target.value)}
+              />
             </>
           )}
         </ModalRegisters>
-      }
-
+      )}
     </>
   );
-}
+};
 
 export default Tickets;
