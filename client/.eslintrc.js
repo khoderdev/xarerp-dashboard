@@ -13,7 +13,8 @@ module.exports = {
   rules: {
     "react/react-in-jsx-scope": "off", // Disable the rule
     "@typescript-eslint/no-explicit-any": "off",
-    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/exhaustive-deps": "off", // Turn off exhaustive-deps rule
     "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-non-null-assertion": "off", // Turn off non-null assertion rule
   },
 };

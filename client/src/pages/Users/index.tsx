@@ -213,12 +213,12 @@ const Users = () => {
               : "create"
           }
           dataKey="user"
-          title={
+          title={   
             state.modalRegisters.editingRegister
-              ? "Editar usuário"
+              ? "Edit user"
               : state.modalRegisters.deletingRegister
-              ? "Delete usuário"
-              : "Cadastrar usuário"
+              ? "Delete user"
+              : "Register user"
           }
         >
           {state.modalRegisters.deletingRegister ? (
@@ -230,14 +230,14 @@ const Users = () => {
             <>
               <Input
                 label="Name"
-                placeholder="Usuário 1"
+                placeholder="user 1"
                 value={name}
                 onChange={(e: any) => setName(e.target.value)}
               />
 
               <Input
                 label="E-mail"
-                placeholder="usuario1@email.com"
+                placeholder="user@email.com"
                 value={email}
                 onChange={(e: any) => setEmail(e.target.value)}
               />
