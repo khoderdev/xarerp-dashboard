@@ -87,7 +87,7 @@ const CommonSections = ({ data, handleNew }: CommonSectionsProps) => {
         });
       }
     })();
-  }, []);
+  }, [api, clearOnPageChange, data.endpoint, data.key, data.tableHeads, data.tableTitle, dispatch]);
 
   useEffect(() => {
     if (!state.tableRegisters.initialFetch) {
