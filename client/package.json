@@ -1,10 +1,13 @@
 {
-  "name": "xarerp-client",
-  "version": "0.1.0",
+  "name": "frontend",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
+    "@mui/material": "^6.1.0",
     "@types/jest": "^29.5.13",
     "@types/node": "^22.5.5",
     "@types/react-dom": "^18.3.0",
