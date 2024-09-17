@@ -27,17 +27,13 @@ const Stores = () => {
       value: 'Headquarter'
     },
     {
-      name: 'Branch',
-      value: 'Branch'
+      name: 'Warehouse',
+      value: 'Warehouse'
     },
     {
       name: 'Franchise',
       value: 'Franchise'
     },
-    {
-      name: 'Reseller',
-      value: 'Reseller'
-    }
   ]
 
   const dataTable: TableRegisters = {
