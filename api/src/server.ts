@@ -115,7 +115,7 @@ const morganFormat =
 // });
 
 const allowedOrigins = [
-  "https://dev-11-8sqbalr32-khoderdevs-projects.vercel.app/",
+  "https://dev-11-8sqbalr32-khoderdevs-projects.vercel.app",
   "https://khoderdev.github.io/xarerp-dashboard",
   "https://khoderdev.github.io",
   "https://test.staysafeaa.org",
