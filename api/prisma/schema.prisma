@@ -29,9 +29,9 @@ model Carrier {
 }
 
 enum StoreType {
-  Headquarter
-  Warehouse
-  Franchise
+  HEADQUARTER
+  WAREHOUSE
+  FRANCHISE
 }
 
 model Store {
