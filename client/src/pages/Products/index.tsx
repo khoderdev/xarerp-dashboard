@@ -1,479 +1,21 @@
-// import { useContext, useState, useEffect } from "react";
-// import { GlobalContext } from "../../contexts/GlobalContext";
-// import { useApi } from "../../hooks/useApi";
-// import * as C from "./styles";
+import { useContext, useState, useEffect } from 'react';
+import { GlobalContext } from '../../contexts/GlobalContext';
+import { useApi } from '../../hooks/useApi';
+import * as C from './styles';
 
-// import CommonSections from "../../components/CommonSections";
+import CommonSections from '../../components/CommonSections';
 
-// import ModalRegisters from "../../components/ModalRegisters";
-// import Input from "../../components/ModalRegisters/Input";
-// import Select from "../../components/ModalRegisters/Select";
+import ModalRegisters from '../../components/ModalRegisters';
+import Input from '../../components/ModalRegisters/Input';
+import Select from '../../components/ModalRegisters/Select';
 
-// import { CreateProduct } from "../../types/Product";
-// import { TableRegisters } from "../../types/TableRegisters";
-
-// type Options = {
-//   name: string;
-//   value: string;
-// };
-
-// const Products = () => {
-//   const api = useApi();
-//   const { state, dispatch } = useContext(GlobalContext);
-
-//   const [categories, setCategories] = useState<Options[]>([]);
-//   const [stores, setStores] = useState<Options[]>([]);
-//   const [providers, setProviders] = useState<Options[]>([]);
-
-//   const [name, setName] = useState("");
-//   const [description, setDescription] = useState("");
-//   const [purchase_price, setPurchase_price] = useState(0);
-//   const [sale_price, setSale_price] = useState(0);
-//   const [category, setCategory] = useState("");
-//   const [unity, setUnity] = useState("");
-//   const [provider, setProvider] = useState("");
-//   const [lot, setLot] = useState(0);
-//   const [validity, setValidity] = useState("");
-//   const [quantity, setQuantity] = useState(0);
-
-//   const [isNewCategory, setIsNewCategory] = useState(false);
-//   const [nameNewCategory, setNameNewCategory] = useState("");
-//   const [hasError, setHasError] = useState(false);
-//   const [error, setError] = useState("");
-
-//   const dataProps: CreateProduct = {
-//     name,
-//     description,
-//     purchase_price,
-//     sale_price,
-//     category,
-//     unity,
-//     provider,
-//     lot,
-//     validity,
-//     quantity,
-//   };
-
-//   const dataTable: TableRegisters = {
-//     endpoint: "products",
-//     key: "products",
-//     roles: ["create_product", "update_product", "delete_product"],
-//     tableHeads: [
-//       {
-//         key: "name",
-//         title: "Name",
-//         width: 480,
-//       },
-//       {
-//         key: "quantity",
-//         title: "Quantity",
-//         width: 280,
-//       },
-//       {
-//         key: "sale_price_formatted",
-//         title: "Unit price",
-//         width: 280,
-//       },
-//       {
-//         key: "actions",
-//         title: "Actions",
-//         width: 380,
-//       },
-//     ],
-//     tableTitle: "Registered products",
-//   };
-
-//   const handleNewCategory = async (e: any) => {
-//     e.preventDefault();
-
-//     const result = await api.createRegister("categories", {
-//       title: nameNewCategory,
-//     });
-
-//     if (result.category) {
-//       setCategories((oldArray) => [
-//         ...oldArray,
-//         {
-//           name: result.category.title,
-//           value: result.category.id,
-//         },
-//       ]);
-//       setCategory(result.category.id);
-//       setIsNewCategory(!isNewCategory);
-//       setHasError(false);
-//       setError("");
-//       setNameNewCategory("");
-//     } else if (result.error) {
-//       setHasError(true);
-//       setError(result.error);
-//     }
-//   };
-
-//   const handleNewProduct = async () => {
-//     setName("");
-//     setDescription("");
-//     setPurchase_price(0);
-//     setSale_price(0);
-//     setCategory("");
-//     setUnity("");
-//     setProvider("");
-//     setLot(0);
-//     setValidity("");
-//     setQuantity(0);
-
-//     setCategories([]);
-//     setStores([]);
-//     setProviders([]);
-
-//     try {
-//       const resultCategories = await api.getRegisters("categories", Number(0));
-//       const resultStores = await api.getRegisters("stores", Number(0));
-//       const resultProviders = await api.getRegisters("providers", Number(0));
-
-//       if (resultCategories && resultCategories.categories) {
-//         setCategories(
-//           resultCategories.categories.map(
-//             (item: { title: string; id: string }) => ({
-//               name: item.title,
-//               value: item.id,
-//             })
-//           )
-//         );
-//       } else {
-//         console.error("Unexpected format for categories", resultCategories);
-//       }
-
-//       if (resultStores && resultStores.stores) {
-//         setStores(
-//           resultStores.stores.map((item: { name: string; id: string }) => ({
-//             name: item.name,
-//             value: item.id,
-//           }))
-//         );
-//       } else {
-//         console.error("Unexpected format for stores", resultStores);
-//       }
-
-//       if (resultProviders && resultProviders.providers) {
-//         setProviders(
-//           resultProviders.providers.map(
-//             (item: { name: string; id: string }) => ({
-//               name: item.name,
-//               value: item.id,
-//             })
-//           )
-//         );
-//       } else {
-//         console.error("Unexpected format for providers", resultProviders);
-//       }
-//     } catch (error) {
-//       console.error("Failed to fetch data", error);
-//     }
-
-//     dispatch({
-//       type: "MODALREGISTERS_SET_LOADINGREGISTER",
-//       payload: {
-//         loadingRegister: false,
-//       },
-//     });
-//     dispatch({
-//       type: "MODALREGISTERS_SET_OPENEDMODAL",
-//       payload: {
-//         openedModal: true,
-//       },
-//     });
-//   };
-
-//   useEffect(() => {
-//     dispatch({
-//       type: "REGISTER_CHANGE_HASERROR",
-//       payload: {
-//         hasError: false,
-//       },
-//     });
-//     dispatch({
-//       type: "REGISTER_CHANGE_PROPS",
-//       payload: {
-//         props: { ...dataProps },
-//       },
-//     });
-
-//     if (
-//       name !== "" &&
-//       description !== "" &&
-//       purchase_price > 0 &&
-//       sale_price > 0 &&
-//       category !== "" &&
-//       unity !== "" &&
-//       provider !== "" &&
-//       lot > 0 &&
-//       validity !== "" &&
-//       quantity > 0
-//     ) {
-//       dispatch({
-//         type: "REGISTER_CHANGE_ISREADY",
-//         payload: {
-//           isReady: true,
-//         },
-//       });
-//     } else {
-//       dispatch({
-//         type: "REGISTER_CHANGE_ISREADY",
-//         payload: {
-//           isReady: false,
-//         },
-//       });
-//       dispatch({
-//         type: "REGISTER_CHANGE_ERROR",
-//         payload: {
-//           error: "You must fill all fields above.",
-//         },
-//       });
-//     }
-//     // eslint-disable-next-line react-hooks/exhaustive-deps
-//   }, [
-//     name,
-//     description,
-//     purchase_price,
-//     sale_price,
-//     category,
-//     unity,
-//     provider,
-//     lot,
-//     validity,
-//     quantity,
-//   ]);
-
-
-//   useEffect(() => {
-//     console.log("Providers:", providers); // Log the providers state
-
-//     if (
-//       state.modalRegisters.editingRegister &&
-//       state.modalRegisters.registerEditingId !== ""
-//     ) {
-//       (async () => {
-//         setCategories([]);
-//         setStores([]);
-//         setProviders([]);
-
-//         const resultCategories = await api.getRegisters("categories", Number(0));
-//         const resultStores = await api.getRegisters("stores", Number(0));
-//         const resultProviders = await api.getRegisters("providers", Number(0));
-
-//         if (resultCategories.categories) {
-//           resultCategories.categories.map(
-//             (item: { title: string; id: string }) =>
-//               setCategories((oldArray) => [
-//                 ...oldArray,
-//                 {
-//                   name: item.title,
-//                   value: item.id,
-//                 },
-//               ])
-//           );
-//         }
-
-//         if (resultStores.stores) {
-//           resultStores.stores[1].map((item: { name: string; id: string }) =>
-//             setStores((oldArray) => [
-//               ...oldArray,
-//               {
-//                 name: item.name,
-//                 value: item.id,
-//               },
-//             ])
-//           );
-//         }
-
-//         if (resultProviders.providers) {
-//           resultProviders.providers[1].map(
-//             (item: { name: string; id: string }) =>
-//               setProviders((oldArray) => [
-//                 ...oldArray,
-//                 {
-//                   name: item.name,
-//                   value: item.id,
-//                 },
-//               ])
-//           );
-//         }
-//       })();
-
-//       setName(state.register.props.name);
-//       setDescription(state.register.props.description);
-//       setPurchase_price(state.register.props.purchase_price);
-//       setSale_price(state.register.props.sale_price);
-//       setCategory(state.register.props.category_id);
-//       setUnity(state.register.props.unity_id);
-//       setProvider(state.register.props.provider_id);
-//       setLot(state.register.props.lot);
-//       setValidity(state.register.props.validity);
-//       setQuantity(state.register.props.quantity);
-//     }
-//     // eslint-disable-next-line react-hooks/exhaustive-deps
-//   }, [
-//     state.modalRegisters.editingRegister,
-//     state.modalRegisters.registerEditingId,
-//   ]);
-
-
-//   return (
-//     <>
-//       <CommonSections data={dataTable} handleNew={handleNewProduct} />
-
-//       {state.modalRegisters.openedModal && (
-//         <ModalRegisters
-//           endpoint={
-//             state.modalRegisters.editingRegister ? "products" : "products"
-//           }
-//           type={
-//             state.modalRegisters.editingRegister
-//               ? "update"
-//               : state.modalRegisters.deletingRegister
-//                 ? "delete"
-//                 : "create"
-//           }
-//           dataKey="product"
-//           title={
-//             state.modalRegisters.editingRegister
-//               ? "Edit product"
-//               : state.modalRegisters.deletingRegister
-//                 ? "Delete product"
-//                 : "Register product"
-//           }
-//         >
-//           {state.modalRegisters.deletingRegister ? (
-//             <p>
-//               Esse processo é irreversível e excluirá também outros dados que
-//               estejam relacionados a esse registro. Deseja continuar?
-//             </p>
-//           ) : (
-//             <>
-//               <Input
-//                 label="Name"
-//                 placeholder="Product 1"
-//                 value={name}
-//                 onChange={(e: any) => setName(e.target.value)}
-//               />
-
-//               <Input
-//                 label="Description"
-//                 placeholder="Product Description 1"
-//                 value={description}
-//                 onChange={(e: any) => setDescription(e.target.value)}
-//               />
-
-//               <Input
-//                 label="Purchase price"
-//                 placeholder="10"
-//                 value={purchase_price > 0 ? purchase_price : ""}
-//                 onChange={(e: any) =>
-//                   setPurchase_price(parseFloat(e.target.value))
-//                 }
-//               />
-
-//               <Input
-//                 label="Selling price"
-//                 placeholder="15"
-//                 value={sale_price > 0 ? sale_price : ""}
-//                 onChange={(e: any) => setSale_price(parseFloat(e.target.value))}
-//               />
-
-//               <Select
-//                 label="Category"
-//                 dataOptions={categories}
-//                 value={category}
-//                 onChange={(e: any) => setCategory(e.target.value)}
-//               />
-
-//               <C.ButtonNewCategory
-//                 onClick={(e: any) => {
-//                   e.preventDefault();
-//                   setIsNewCategory(!isNewCategory);
-//                 }}
-//               >
-//                 New category
-//               </C.ButtonNewCategory>
-
-//               {isNewCategory && (
-//                 <C.NewCategoryArea>
-//                   <div style={{ display: "flex", alignItems: "flex-end" }}>
-//                     <Input
-//                       label="Category Name"
-//                       placeholder="Drinks, Food.."
-//                       value={nameNewCategory}
-//                       onChange={(e: any) => setNameNewCategory(e.target.value)}
-//                     />
-//                     <C.ButtonAddNewCategory onClick={handleNewCategory}>
-//                       +
-//                     </C.ButtonAddNewCategory>
-//                   </div>
-//                   {hasError && <p>{error}</p>}
-//                 </C.NewCategoryArea>
-//               )}
-
-//               <Select
-//                 label="Store"
-//                 dataOptions={stores}
-//                 value={unity}
-//                 onChange={(e: any) => setUnity(e.target.value)}
-//               />
-
-//               <Select
-//                 label="Supplier"
-//                 dataOptions={providers}
-//                 value={provider}
-//                 onChange={(e: any) => setProvider(e.target.value)}
-//               />
-
-//               <Input
-//                 label="Batch #"
-//                 placeholder="123456"
-//                 value={lot > 0 ? lot : ""}
-//                 onChange={(e: any) => setLot(parseInt(e.target.value))}
-//               />
-
-//               <Input
-//                 label="Validity"
-//                 placeholder="2022-05-10"
-//                 type="date"
-//                 value={validity}
-//                 onChange={(e: any) => setValidity(e.target.value)}
-//               />
-
-//               <Input
-//                 label="Quantity"
-//                 placeholder="5"
-//                 value={quantity > 0 ? quantity : ""}
-//                 onChange={(e: any) => setQuantity(parseInt(e.target.value))}
-//               />
-//             </>
-//           )}
-//         </ModalRegisters>
-//       )}
-//     </>
-//   );
-// };
-
-// export default Products;
-import { useContext, useState, useEffect } from "react";
-import { GlobalContext } from "../../contexts/GlobalContext";
-import { useApi } from "../../hooks/useApi";
-import * as C from "./styles";
-
-import CommonSections from "../../components/CommonSections";
-import ModalRegisters from "../../components/ModalRegisters";
-import Input from "../../components/ModalRegisters/Input";
-import Select from "../../components/ModalRegisters/Select";
-
-import { CreateProduct } from "../../types/Product";
-import { TableRegisters } from "../../types/TableRegisters";
+import { CreateProduct } from '../../types/Product';
+import { TableRegisters } from '../../types/TableRegisters';
 
 type Options = {
   name: string;
   value: string;
-};
+}
 
 const Products = () => {
   const api = useApi();
@@ -483,24 +25,21 @@ const Products = () => {
   const [stores, setStores] = useState<Options[]>([]);
   const [providers, setProviders] = useState<Options[]>([]);
 
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
   const [purchase_price, setPurchase_price] = useState(0);
   const [sale_price, setSale_price] = useState(0);
-  const [category, setCategory] = useState("");
-  const [unity, setUnity] = useState("");
-  const [provider, setProvider] = useState("");
+  const [category, setCategory] = useState('');
+  const [unity, setUnity] = useState('');
+  const [provider, setProvider] = useState('');
   const [lot, setLot] = useState(0);
-  const [validity, setValidity] = useState("");
+  const [validity, setValidity] = useState('');
   const [quantity, setQuantity] = useState(0);
 
   const [isNewCategory, setIsNewCategory] = useState(false);
-  const [nameNewCategory, setNameNewCategory] = useState("");
-
-  const [isNewProvider, setIsNewProvider] = useState(false);
-  const [nameNewProvider, setNameNewProvider] = useState("");
+  const [nameNewCategory, setNameNewCategory] = useState('');
   const [hasError, setHasError] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   const dataProps: CreateProduct = {
     name,
@@ -512,275 +51,219 @@ const Products = () => {
     provider,
     lot,
     validity,
-    quantity,
-  };
+    quantity
+  }
 
   const dataTable: TableRegisters = {
     endpoint: "products",
     key: "products",
-    roles: ["create_product", "update_product", "delete_product"],
+    roles: ['create_product', 'update_product', 'delete_product'],
     tableHeads: [
       {
-        key: "name",
-        title: "Name",
-        width: 480,
+        key: 'name',
+        title: 'Name',
+        width: 480
       },
       {
-        key: "quantity",
-        title: "Quantity",
-        width: 280,
+        key: 'quantity',
+        title: 'Quantity',
+        width: 280
       },
       {
-        key: "sale_price_formatted",
-        title: "Unit price",
-        width: 280,
+        key: 'sale_price_formatted',
+        title: 'Unit price',
+        width: 280
       },
       {
-        key: "actions",
-        title: "Actions",
-        width: 380,
-      },
+        key: 'actions',
+        title: 'Actions',
+        width: 380
+      }
     ],
-    tableTitle: "Registered products",
-  };
+    tableTitle: 'Products'
+  }
 
   const handleNewCategory = async (e: any) => {
     e.preventDefault();
 
-    const result = await api.createRegister("categories", {
-      title: nameNewCategory,
-    });
+    const result = await api.createRegister('categories', { title: nameNewCategory });
 
     if (result.category) {
-      setCategories((oldArray) => [
-        ...oldArray,
-        {
-          name: result.category.title,
-          value: result.category.id,
-        },
+      setCategories(oldArray => [...oldArray,
+      {
+        name: result.category.title,
+        value: result.category.id
+      }
       ]);
       setCategory(result.category.id);
       setIsNewCategory(!isNewCategory);
       setHasError(false);
-      setError("");
-      setNameNewCategory("");
+      setError('');
+      setNameNewCategory('');
     } else if (result.error) {
       setHasError(true);
       setError(result.error);
     }
-  };
-
-  const handleNewProvider = async (e: any) => {
-    e.preventDefault();
-
-    const result = await api.createRegister("providers", {
-      title: nameNewProvider,
-    });
-
-    if (result.provider) {
-      setProviders((oldArray) => [
-        ...oldArray,
-        {
-          name: result.provider.title,
-          value: result.provider.id,
-        },
-      ]);
-      setProvider(result.provider.id);
-      setIsNewProvider(!isNewProvider);
-      setHasError(false);
-      setError("");
-      setNameNewProvider("");
-    } else if (result.error) {
-      setHasError(true);
-      setError(result.error);
-    }
-  };
+  }
 
   const handleNewProduct = async () => {
-    setName("");
-    setDescription("");
+    setName('');
+    setDescription('');
     setPurchase_price(0);
     setSale_price(0);
-    setCategory("");
-    setUnity("");
-    setProvider("");
+    setCategory('');
+    setUnity('');
+    setProvider('');
     setLot(0);
-    setValidity("");
+    setValidity('');
     setQuantity(0);
 
     setCategories([]);
     setStores([]);
     setProviders([]);
 
-    try {
-      const resultCategories = await api.getRegisters("categories", Number(0));
-      const resultStores = await api.getRegisters("stores", Number(0));
-      const resultProviders = await api.getRegisters("providers", Number(0));
+    const resultCategories = await api.getRegisters('categories', Number(0));
+    const resultStores = await api.getRegisters('stores', Number(0));
+    const resultProviders = await api.getRegisters('providers', Number(0));
 
-      console.log("API response for categories:", resultCategories);
-      console.log("API response for stores:", resultStores);
-      console.log("API response for providers:", resultProviders);
+    if (resultCategories.categories) {
+      resultCategories.categories.map((item: { title: string; id: string; }, index: any) => (
+        setCategories(oldArray => [...oldArray,
+        {
+          name: item.title,
+          value: item.id
+        }
+        ])
+      ));
+    }
 
-      // Map categories
-      if (resultCategories && resultCategories.categories) {
-        setCategories(
-          resultCategories.categories.map((item: { title: string; id: string }) => ({
-            name: item.title || "Unknown",
-            value: item.id || "",
-          }))
-        );
-      } else {
-        console.error("Unexpected format for categories", resultCategories);
-      }
+    if (resultStores.stores) {
+      resultStores.stores[1].map((item: { name: string; id: string; }, index: any) => (
+        setStores(oldArray => [...oldArray,
+        {
+          name: item.name,
+          value: item.id
+        }
+        ])
+      ));
+    }
 
-      // Map stores
-      if (resultStores && resultStores.stores) {
-        setStores(
-          resultStores.stores.map((item: { title: string; id: string }) => ({
-            name: item.title || "Unknown",
-            value: item.id || "",
-          }))
-        );
-      } else {
-        console.error("Unexpected format for stores", resultStores);
-      }
-
-      // Map providers
-      if (resultProviders && resultProviders.providers) {
-        setProviders(
-          resultProviders.providers.map((item: { name: string; id: string }) => ({
-            name: item.name || "Unknown",
-            value: item.id || "",
-          }))
-        );
-      } else {
-        console.error("Unexpected format for providers", resultProviders);
-      }
-    } catch (error) {
-      console.error("Failed to fetch data", error);
+    if (resultProviders.providers) {
+      resultProviders.providers[1].map((item: { name: string; id: string; }, index: any) => (
+        setProviders(oldArray => [...oldArray,
+        {
+          name: item.name,
+          value: item.id
+        }
+        ])
+      ));
     }
 
     dispatch({
-      type: "MODALREGISTERS_SET_LOADINGREGISTER",
+      type: 'MODALREGISTERS_SET_LOADINGREGISTER',
       payload: {
-        loadingRegister: false,
-      },
-    });
+        loadingRegister: false
+      }
+    })
     dispatch({
-      type: "MODALREGISTERS_SET_OPENEDMODAL",
+      type: 'MODALREGISTERS_SET_OPENEDMODAL',
       payload: {
-        openedModal: true,
-      },
+        openedModal: true
+      }
     });
-  };
-
-
+  }
 
   useEffect(() => {
     dispatch({
-      type: "REGISTER_CHANGE_HASERROR",
+      type: 'REGISTER_CHANGE_HASERROR',
       payload: {
-        hasError: false,
-      },
+        hasError: false
+      }
     });
     dispatch({
-      type: "REGISTER_CHANGE_PROPS",
+      type: 'REGISTER_CHANGE_PROPS',
       payload: {
-        props: { ...dataProps },
-      },
+        props: { ...dataProps }
+      }
     });
 
     if (
-      name !== "" &&
-      description !== "" &&
+      name !== '' &&
+      description !== '' &&
       purchase_price > 0 &&
       sale_price > 0 &&
-      category !== "" &&
-      unity !== "" &&
-      provider !== "" &&
+      category !== '' &&
+      unity !== '' &&
+      provider !== '' &&
       lot > 0 &&
-      validity !== "" &&
+      validity !== '' &&
       quantity > 0
     ) {
       dispatch({
-        type: "REGISTER_CHANGE_ISREADY",
+        type: 'REGISTER_CHANGE_ISREADY',
         payload: {
-          isReady: true,
-        },
+          isReady: true
+        }
       });
     } else {
       dispatch({
-        type: "REGISTER_CHANGE_ISREADY",
+        type: 'REGISTER_CHANGE_ISREADY',
         payload: {
-          isReady: false,
-        },
+          isReady: false
+        }
       });
       dispatch({
-        type: "REGISTER_CHANGE_ERROR",
+        type: 'REGISTER_CHANGE_ERROR',
         payload: {
-          error: "You must fill all fields above.",
-        },
+          error: 'You must fill all fields above'
+        }
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    name,
-    description,
-    purchase_price,
-    sale_price,
-    category,
-    unity,
-    provider,
-    lot,
-    validity,
-    quantity,
-  ]);
+  }, [name, description, purchase_price, sale_price, category, unity, provider, lot, validity, quantity]);
 
   useEffect(() => {
-    console.log("Providers:", providers); // Log the providers state
-
-    if (
-      state.modalRegisters.editingRegister &&
-      state.modalRegisters.registerEditingId !== ""
-    ) {
+    if (state.modalRegisters.editingRegister && state.modalRegisters.registerEditingId !== '') {
       (async () => {
         setCategories([]);
         setStores([]);
         setProviders([]);
 
-        const resultCategories = await api.getRegisters("categories", Number(0));
-        const resultStores = await api.getRegisters("stores", Number(0));
-        const resultProviders = await api.getRegisters("providers", Number(0));
+        const resultCategories = await api.getRegisters('categories', Number(0));
+        const resultStores = await api.getRegisters('stores', Number(0));
+        const resultProviders = await api.getRegisters('providers', Number(0));
 
         if (resultCategories.categories) {
-          setCategories(
-            resultCategories.categories.map(
-              (item: { title: string; id: string }) => ({
-                name: item.title,
-                value: item.id,
-              })
-            )
-          );
+          resultCategories.categories.map((item: { title: string; id: string; }, index: any) => (
+            setCategories(oldArray => [...oldArray,
+            {
+              name: item.title,
+              value: item.id
+            }
+            ])
+          ));
         }
 
         if (resultStores.stores) {
-          setStores(
-            resultStores.stores.map((item: { name: string; id: string }) => ({
+          resultStores.stores[1].map((item: { name: string; id: string; }, index: any) => (
+            setStores(oldArray => [...oldArray,
+            {
               name: item.name,
-              value: item.id,
-            }))
-          );
+              value: item.id
+            }
+            ])
+          ));
         }
 
         if (resultProviders.providers) {
-          setProviders(
-            resultProviders.providers.map(
-              (item: { name: string; id: string }) => ({
-                name: item.name,
-                value: item.id,
-              })
-            )
-          );
+          resultProviders.providers[1].map((item: { name: string; id: string; }, index: any) => (
+            setProviders(oldArray => [...oldArray,
+            {
+              name: item.name,
+              value: item.id
+            }
+            ])
+          ));
         }
       })();
 
@@ -796,10 +279,7 @@ const Products = () => {
       setQuantity(state.register.props.quantity);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    state.modalRegisters.editingRegister,
-    state.modalRegisters.registerEditingId,
-  ]);
+  }, [state.modalRegisters.editingRegister, state.modalRegisters.registerEditingId]);
 
   return (
     <>
@@ -807,60 +287,47 @@ const Products = () => {
 
       {state.modalRegisters.openedModal && (
         <ModalRegisters
-          endpoint={
-            state.modalRegisters.editingRegister ? "products" : "products"
-          }
-          type={
-            state.modalRegisters.editingRegister
-              ? "update"
-              : state.modalRegisters.deletingRegister
-                ? "delete"
-                : "create"
-          }
+          endpoint="products"
+          type={state.modalRegisters.editingRegister
+            ? 'update'
+            : state.modalRegisters.deletingRegister
+              ? 'delete'
+              : 'create'}
           dataKey="product"
           title={
             state.modalRegisters.editingRegister
-              ? "Edit product"
+              ? 'Edit Product'
               : state.modalRegisters.deletingRegister
-                ? "Delete product"
-                : "Register product"
+                ? 'Delete Product'
+                : 'Add New Product'
           }
         >
           {state.modalRegisters.deletingRegister ? (
-            <p>
-              Esse processo é irreversível e excluirá também outros dados que
-              estejam relacionados a esse registro. Deseja continuar?
-            </p>
+            <p>This process is irreversible and will also delete other data related to this record. Do you wish to continue?</p>
           ) : (
             <>
               <Input
                 label="Name"
-                placeholder="Product 1"
+                placeholder={
+                  state.modalRegisters.editingRegister
+                    ? 'Edit Product Name'
+                    : 'Product Name'
+                }
                 value={name}
                 onChange={(e: any) => setName(e.target.value)}
               />
 
               <Input
                 label="Description"
-                placeholder="Product Description 1"
+                placeholder={
+                  state.modalRegisters.editingRegister
+                    ? 'Edit Product Description'
+                    : 'Product Description'
+                }
+                textarea={true} // Use textarea
+                rows={2}
                 value={description}
                 onChange={(e: any) => setDescription(e.target.value)}
-              />
-
-              <Input
-                label="Purchase price"
-                placeholder="10"
-                value={purchase_price > 0 ? purchase_price : ""}
-                onChange={(e: any) =>
-                  setPurchase_price(parseFloat(e.target.value))
-                }
-              />
-
-              <Input
-                label="Selling price"
-                placeholder="15"
-                value={sale_price > 0 ? sale_price : ""}
-                onChange={(e: any) => setSale_price(parseFloat(e.target.value))}
               />
 
               <Select
@@ -876,12 +343,12 @@ const Products = () => {
                   setIsNewCategory(!isNewCategory);
                 }}
               >
-                New category
+                New Category
               </C.ButtonNewCategory>
 
               {isNewCategory && (
                 <C.NewCategoryArea>
-                  <div style={{ display: "flex", alignItems: "flex-end" }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-end' }}>
                     <Input
                       label="Category Name"
                       placeholder="Drinks, Food.."
@@ -896,12 +363,27 @@ const Products = () => {
                 </C.NewCategoryArea>
               )}
 
-
               <Select
-                label="Store"
+                label="Unit"
                 dataOptions={stores}
                 value={unity}
                 onChange={(e: any) => setUnity(e.target.value)}
+              />
+
+              <Input
+                label="Purchase Price"
+                placeholder="10"
+                value={purchase_price > 0 ? purchase_price : ""}
+                onChange={(e: any) =>
+                  setPurchase_price(parseFloat(e.target.value))
+                }
+              />
+
+              <Input
+                label="Selling Price"
+                placeholder="15"
+                value={sale_price > 0 ? sale_price : ""}
+                onChange={(e: any) => setSale_price(parseFloat(e.target.value))}
               />
 
               <Select
@@ -910,44 +392,16 @@ const Products = () => {
                 value={provider}
                 onChange={(e: any) => setProvider(e.target.value)}
               />
-              <C.ButtonAddNewProvider
-                onClick={(e: any) => {
-                  e.preventDefault();
-                  setIsNewCategory(!isNewCategory);
-                }}
-              >
-                New Supplier
-              </C.ButtonAddNewProvider>
-
-              {isNewProvider && (
-                <C.NewProviderArea>
-                  <div style={{ display: "flex", alignItems: "flex-end" }}>
-                    <Input
-                      label="Supplier Name"
-                      placeholder="supplier.."
-                      value={nameNewProvider}
-                      onChange={(e: any) => setNameNewProvider(e.target.value)}
-                    />
-                    <C.ButtonAddNewProvider onClick={handleNewProvider}>
-                      +
-                    </C.ButtonAddNewProvider>
-                  </div>
-                  {hasError && <p>{error}</p>}
-                </C.NewProviderArea>
-              )}
-
-
-
 
               <Input
-                label="Batch #"
+                label="Batch Number"
                 placeholder="123456"
-                value={lot > 0 ? lot : ""}
+                value={lot > 0 ? lot : ''}
                 onChange={(e: any) => setLot(parseInt(e.target.value))}
               />
 
               <Input
-                label="Validity"
+                label="Expiry Date"
                 placeholder="2022-05-10"
                 type="date"
                 value={validity}
@@ -957,7 +411,7 @@ const Products = () => {
               <Input
                 label="Quantity"
                 placeholder="5"
-                value={quantity > 0 ? quantity : ""}
+                value={quantity > 0 ? quantity : ''}
                 onChange={(e: any) => setQuantity(parseInt(e.target.value))}
               />
             </>
@@ -966,6 +420,7 @@ const Products = () => {
       )}
     </>
   );
-};
+
+}
 
 export default Products;

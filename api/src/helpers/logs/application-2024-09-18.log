@@ -1,0 +1,49 @@
+2024-09-17T21:00:34.250Z [info]: POST /validate 200 4ms
+2024-09-17T21:00:34.331Z [info]: GET /v1/products/?page=0&q= 304 13ms
+2024-09-17T21:00:36.005Z [info]: POST /validate 200 3ms
+2024-09-17T21:00:36.199Z [info]: GET /v1/products/?page=0&q= 304 19ms
+2024-09-17T21:04:58.615Z [info]: GET /v1/categories/?page=0&q= 200 5ms
+2024-09-17T21:04:58.623Z [info]: OPTIONS /v1/stores/?page=0&q= 204 1ms
+2024-09-17T21:04:58.631Z [info]: GET /v1/stores/?page=0&q= 304 5ms
+2024-09-17T21:04:58.636Z [info]: OPTIONS /v1/providers/?page=0&q= 204 0ms
+2024-09-17T21:04:58.644Z [info]: GET /v1/providers/?page=0&q= 304 5ms
+2024-09-17T21:08:48.829Z [info]: POST /v1/products 400 5ms
+2024-09-17T21:09:16.876Z [info]: Server is running on port 3333
+2024-09-17T21:09:27.707Z [info]: Server is running on port 3333
+2024-09-17T21:09:30.838Z [info]: Server is running on port 3333
+2024-09-17T21:09:35.243Z [info]: POST /v1/products 500 174ms
+2024-09-17T21:09:51.957Z [info]: Server is running on port 3333
+2024-09-17T21:09:57.167Z [info]: Server is running on port 3333
+2024-09-17T21:10:02.466Z [info]: Server is running on port 3333
+2024-09-17T21:10:10.715Z [info]: POST /v1/products 500 103ms
+2024-09-17T21:10:13.515Z [info]: POST /v1/products 500 11ms
+2024-09-17T21:11:56.035Z [info]: POST /validate 200 5ms
+2024-09-17T21:11:56.118Z [info]: OPTIONS /v1/products/?page=0&q= 204 2ms
+2024-09-17T21:11:56.176Z [info]: GET /v1/products/?page=0&q= 304 52ms
+2024-09-17T21:12:55.399Z [info]: POST /validate 200 4ms
+2024-09-17T21:12:55.487Z [info]: GET /v1/products/?page=0&q= 304 16ms
+2024-09-17T21:12:56.571Z [info]: GET /v1/categories/?page=0&q= 304 5ms
+2024-09-17T21:12:56.607Z [info]: GET /v1/stores/?page=0&q= 304 7ms
+2024-09-17T21:12:56.643Z [info]: GET /v1/providers/?page=0&q= 304 7ms
+2024-09-17T21:13:06.578Z [info]: POST /v1/products 500 8ms
+2024-09-17T21:13:24.579Z [info]: Server is running on port 3333
+2024-09-17T21:13:26.292Z [info]: POST /v1/products 500 117ms
+2024-09-17T21:13:53.444Z [info]: Server is running on port 3333
+2024-09-17T21:14:52.000Z [info]: Server is running on port 3333
+2024-09-17T21:14:57.526Z [info]: Server is running on port 3333
+2024-09-17T21:15:22.820Z [info]: POST /v1/products 500 127ms
+2024-09-17T21:16:11.579Z [info]: Server is running on port 3333
+2024-09-17T21:16:17.578Z [info]: POST /v1/products 500 130ms
+2024-09-17T21:17:50.402Z [info]: Server is running on port 3333
+2024-09-17T21:17:56.281Z [info]: Server is running on port 3333
+2024-09-17T21:18:00.899Z [info]: Server is running on port 3333
+2024-09-17T21:18:07.719Z [info]: Server is running on port 3333
+2024-09-17T21:18:13.832Z [info]: Server is running on port 3333
+2024-09-17T21:18:19.109Z [info]: Server is running on port 3333
+2024-09-17T21:18:21.452Z [info]: Server is running on port 3333
+2024-09-17T21:19:14.371Z [info]: POST /v1/products 400 317ms
+2024-09-17T21:19:29.324Z [info]: Server is running on port 3333
+2024-09-17T21:19:34.650Z [info]: Server is running on port 3333
+2024-09-17T21:20:12.368Z [info]: GET /v1/categories/?page=0&q= 304 80ms
+2024-09-17T21:20:12.390Z [info]: GET /v1/stores/?page=0&q= 304 16ms
+2024-09-17T21:20:12.417Z [info]: GET /v1/providers/?page=0&q= 304 17ms

@@ -58,52 +58,28 @@ const Menu = () => {
       role: "view_dashboard",
     },
     { title: "Stores", icon: "Store", link: "/stores", role: "view_store" },
-    { title: "Store", icon: "Store", link: "/stocks", role: "view_stock" },
     {
       title: "Products",
       icon: "Product",
       link: "/products",
       role: "view_product",
     },
+    // {
+    //   title: "Clients",
+    //   icon: "Client",
+    //   link: "/clients",
+    //   role: "view_client",
+    // },
+    // { title: "Sales", icon: "Sale", link: "/sales", role: "view_sale" },
+
     {
-      title: "Clients",
-      icon: "Client",
-      link: "/clients",
-      role: "view_client",
-    },
-    { title: "Sales", icon: "Sale", link: "/sales", role: "view_sale" },
-    {
-      title: "Carriers",
-      icon: "Carrier",
-      link: "/carriers",
-      role: "view_carrier",
-    },
-    {
-      title: "Providers",
-      icon: "Provider",
-      link: "/providers",
-      role: "view_provider",
-    },
-    {
-      title: "Sellers",
-      icon: "Seller",
-      link: "/sellers",
-      role: "view_seller",
-    },
-    {
-      title: "Purchases",
+      title: "Orders",
       icon: "Purchase",
       link: "/purchases",
       role: "view_purchase",
     },
-    {
-      title: "Financial",
-      icon: "Financial",
-      link: "/financial",
-      role: "view_financial",
-    },
+
     { title: "Users", icon: "User", link: "/users", role: "view_user" },
-    { title: "Support", icon: "Ticket", link: "/tickets", role: "view_ticket" },
   ];
 
   return (
@@ -115,8 +91,8 @@ const Menu = () => {
             ? 216
             : 0
           : state.menu.openedMenu
-          ? 216
-          : 64
+            ? 216
+            : 64
       }
     >
       <C.MenuButton onClick={handleOpenMenu}>

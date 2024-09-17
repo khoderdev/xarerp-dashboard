@@ -68,7 +68,7 @@ const Sales = () => {
         width: 380
       }
     ],
-    tableTitle: 'Registered Sales'
+    tableTitle: 'Sales'
   }
 
   const handleNewSale = async () => {
@@ -296,7 +296,7 @@ const Sales = () => {
           endpoint={state.modalRegisters.editingRegister ? 'sales' : 'sales'}
           type={state.modalRegisters.editingRegister ? 'update' : state.modalRegisters.deletingRegister ? 'delete' : 'create'}
           dataKey="sale"
-          title={state.modalRegisters.editingRegister ? 'Editar venda' : state.modalRegisters.deletingRegister ? 'Delete venda' : 'Cadastrar venda'}
+          title={state.modalRegisters.editingRegister ? 'Edit Sale' : state.modalRegisters.deletingRegister ? 'Delete Sale' : 'Add Sales'}
         >
           {state.modalRegisters.deletingRegister ? (
             <p>This process is irreversible and will also delete other data related to this record. Do you wish to continue?</p>
@@ -322,7 +322,7 @@ const Sales = () => {
                 onChange={(e: any) => setUnity(e.target.value)} />
 
               <Select
-                label="Cliente"
+                label="Client"
                 dataOptions={clients}
                 value={client}
                 onChange={(e: any) => setClient(e.target.value)} />
@@ -334,7 +334,7 @@ const Sales = () => {
                 onChange={(e: any) => setSeller(e.target.value)} />
 
               <Select
-                label="Transportadora"
+                label="Carrier"
                 dataOptions={carriers}
                 value={carrier}
                 onChange={(e: any) => setCarrier(e.target.value)} />

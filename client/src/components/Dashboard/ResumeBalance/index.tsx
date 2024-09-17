@@ -6,7 +6,7 @@ type ResumeBalanceProps = {
 }
 
 const ResumeBalance = ({ value, type }: ResumeBalanceProps) => {
-  const formattedValue = value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+  const formattedValue = value.toLocaleString('en-LB', { style: 'currency', currency: 'USD' });
 
   return (
     <C.Container>

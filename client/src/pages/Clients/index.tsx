@@ -66,7 +66,7 @@ const Clients = () => {
         width: 280,
       },
     ],
-    tableTitle: "Registered customers",
+    tableTitle: "Customers",
   };
 
   const handleNewClient = async () => {
@@ -206,16 +206,16 @@ const Clients = () => {
             state.modalRegisters.editingRegister
               ? "update"
               : state.modalRegisters.deletingRegister
-              ? "delete"
-              : "create"
+                ? "delete"
+                : "create"
           }
           dataKey="client"
           title={
             state.modalRegisters.editingRegister
               ? "Edit client"
               : state.modalRegisters.deletingRegister
-              ? "Delete client"
-              : "Register client"
+                ? "Delete client"
+                : "Register client"
           }
         >
           {state.modalRegisters.deletingRegister ? (

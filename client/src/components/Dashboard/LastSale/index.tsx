@@ -8,7 +8,7 @@ type LastSaleProps = {
 }
 
 const LastSale = ({ price, name, unity, quantity }: LastSaleProps) => {
-  const formattedPrice = price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+  const formattedPrice = price.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
   return (
     <C.Container>

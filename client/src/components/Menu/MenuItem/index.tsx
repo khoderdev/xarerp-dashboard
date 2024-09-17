@@ -53,7 +53,7 @@ const MenuItem = ({ title, icon, link }: MenuItemProps) => {
       <C.ItemIcon>
         {icon === 'Dashboard' && <Dashboard style={iconProps} />}
         {icon === 'Store' && <Store style={iconProps} />}
-        {icon === 'Store' && <ShowChart style={iconProps} />}
+        {/* {icon === 'Store' && <ShowChart style={iconProps} />} */}
         {icon === 'Product' && <ListAlt style={iconProps} />}
         {icon === 'Client' && <EmojiPeople style={iconProps} />}
         {icon === 'Sale' && <ShoppingCart style={iconProps} />}

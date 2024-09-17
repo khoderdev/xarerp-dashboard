@@ -1,0 +1,16 @@
+website Color
+
+unit icon
+__________________
+
+dashboard router
+
+add branch creati j ui to stores
+
+save or cancel
+
+split currency col to a new table (USD LBP)
+
+branch is optonal for warehouse
+
+add asterix

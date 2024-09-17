@@ -29,9 +29,9 @@ export const getAll = async (req: Request, res: Response) => {
         product_description: purchases[1][i].product.description,
         quantity: purchases[1][i].quantity,
         unit_price: purchases[1][i].unit_price,
-        unit_price_formatted: `${purchases[1][i].unit_price.toLocaleString('pt-br', {
+        unit_price_formatted: `${purchases[1][i].unit_price.toLocaleString('en-LB', {
           style: 'currency',
-          currency: 'BRL',
+          currency: 'USD',
         })}`,
         status: purchases[1][i].status,
         created_at: purchases[1][i].created_at,

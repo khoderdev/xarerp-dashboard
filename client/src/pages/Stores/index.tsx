@@ -22,17 +22,14 @@ const Stores = () => {
   }
 
   const dataOptionsStore = [
-    {
-      name: 'Headquarter',
-      value: 'HEADQUARTER'
-    },
+
     {
       name: 'Warehouse',
       value: 'WAREHOUSE'
     },
     {
-      name: 'Franchise',
-      value: 'FRANCHISE'
+      name: 'Branch',
+      value: 'BRANCH'
     },
   ]
 
@@ -57,7 +54,7 @@ const Stores = () => {
         width: 180
       }
     ],
-    tableTitle: 'Registered stores'
+    tableTitle: 'Units'
   }
 
   const handleNewStore = () => {
@@ -129,16 +126,16 @@ const Stores = () => {
 
       {state.modalRegisters.openedModal &&
         <ModalRegisters
-          endpoint={state.modalRegisters.editingRegister ? 'stores' : 'stores'}
+          endpoint={state.modalRegisters.editingRegister ? 'Unit' : 'Unit'}
           type={state.modalRegisters.editingRegister ? 'update' : state.modalRegisters.deletingRegister ? 'delete' : 'create'}
           dataKey="store"
-          title={state.modalRegisters.editingRegister ? 'Edit Store' : state.modalRegisters.deletingRegister ? 'Delete stock' : 'Register stock'}
+          title={state.modalRegisters.editingRegister ? 'Edit Unit' : state.modalRegisters.deletingRegister ? 'Delete Unit' : 'Add New Unit'}
         >
           {state.modalRegisters.deletingRegister ? (
             <p>This process is irreversible and will also delete other data related to this record. Do you wish to continue?</p>
           ) : (
             <>
-              <Input label="Name" placeholder="Store 1" value={name || ''} onChange={(e: any) => setName(e.target.value)} />
+              <Input label="Name" placeholder="Unit 1" value={name || ''} onChange={(e: any) => setName(e.target.value)} />
               <Select label="Type" dataOptions={dataOptionsStore} value={type || ''} onChange={(e: any) => setType(e.target.value)} />
             </>
           )}

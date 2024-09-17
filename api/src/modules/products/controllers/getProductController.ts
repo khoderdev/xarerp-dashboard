@@ -25,14 +25,14 @@ export const getAll = async (req: Request, res: Response) => {
         name: products[1][i].name,
         description: products[1][i].description,
         purchase_price: products[1][i].purchase_price,
-        purchase_price_formatted: `${products[1][i].purchase_price.toLocaleString('pt-br', {
+        purchase_price_formatted: `${products[1][i].purchase_price.toLocaleString('en-LB', {
           style: 'currency',
-          currency: 'BRL',
+          currency: 'USD',
         })}`,
         sale_price: products[1][i].sale_price,
-        sale_price_formatted: `${products[1][i].sale_price.toLocaleString('pt-br', {
+        sale_price_formatted: `${products[1][i].sale_price.toLocaleString('en-LB', {
           style: 'currency',
-          currency: 'BRL',
+          currency: 'USD',
         })}`,
         category_id: products[1][i].category_id,
         category: products[1][i].category.title,
@@ -79,14 +79,14 @@ export const getRegisters = async (req: Request, res: Response) => {
         name: products[1][i].name,
         description: products[1][i].description,
         purchase_price: products[1][i].purchase_price,
-        purchase_price_formatted: `${products[1][i].purchase_price.toLocaleString('pt-br', {
+        purchase_price_formatted: `${products[1][i].purchase_price.toLocaleString('en-LB', {
           style: 'currency',
-          currency: 'BRL',
+          currency: 'USD',
         })}`,
         sale_price: products[1][i].sale_price,
-        sale_price_formatted: `${products[1][i].sale_price.toLocaleString('pt-br', {
+        sale_price_formatted: `${products[1][i].sale_price.toLocaleString('en-LB', {
           style: 'currency',
-          currency: 'BRL',
+          currency: 'USD',
         })}`,
         category_id: products[1][i].category_id,
         category: products[1][i].category.title,

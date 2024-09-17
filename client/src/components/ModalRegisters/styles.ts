@@ -104,6 +104,7 @@ export const Option = styled.option``;
 
 export const ButtonArea = styled.div`
   display: flex;
+  align-content:"center";
   gap: 8px;
   padding-top: 16px;
   margin-top: 32px;

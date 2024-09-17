@@ -154,7 +154,7 @@ const CommonSections = ({ data, handleNew }: CommonSectionsProps) => {
             <Add
               style={{ color: "#ffffff", fontSize: "16px", marginRight: "4px" }}
             />
-            New Record
+            New
           </C.NewButton>
         )}
       </C.NewAndSearch>
