@@ -172,7 +172,7 @@ const Tickets = () => {
           endpoint={state.modalRegisters.editingRegister ? 'tickets' : 'tickets'}
           type={state.modalRegisters.editingRegister ? 'update' : state.modalRegisters.deletingRegister ? 'delete' : 'create'}
           dataKey="ticket"
-          title={state.modalRegisters.editingRegister ? 'Editar ticket' : state.modalRegisters.deletingRegister ? 'Delete ticket' : 'Register ticket'}
+          title={state.modalRegisters.editingRegister ? 'Edit ticket' : state.modalRegisters.deletingRegister ? 'Delete ticket' : 'Register ticket'}
         >
           {state.modalRegisters.deletingRegister ? (
             <p>This process is irreversible and will also delete other data related to this record. Do you wish to continue?</p>

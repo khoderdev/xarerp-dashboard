@@ -24,15 +24,15 @@ const Stores = () => {
   const dataOptionsStore = [
     {
       name: 'Headquarter',
-      value: 'Headquarter'
+      value: 'HEADQUARTER'
     },
     {
       name: 'Warehouse',
-      value: 'Warehouse'
+      value: 'WAREHOUSE'
     },
     {
       name: 'Franchise',
-      value: 'Franchise'
+      value: 'FRANCHISE'
     },
   ]
 

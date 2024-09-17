@@ -6,14 +6,14 @@ const main = async () => {
   const store = await prisma.store.create({
     data: {
       name: "Main Store",
-      type: "Headquarter",
+      type: "HEADQUARTER",
     },
   });
 
   const user = await prisma.user.create({
     data: {
-      name: "Admin",
-      email: "admin@mail.com",
+      name: "Nizar",
+      email: "nizar@mail.com",
       password: "$2a$10$zqgAMD5bVH5nnaN0NV7V6eYUjweRi4I7h1am3GpIwCAYrnWCuG4vO",
       unity_id: store.id,
       position: "Administrator",

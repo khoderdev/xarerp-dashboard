@@ -29,24 +29,25 @@ model Carrier {
 }
 
 enum StoreType {
-  Headquarter
-  Warehouse
-  Franchise
+  HEADQUARTER
+  WAREHOUSE
+  FRANCHISE
+  BRANCH
 }
 
 model Store {
-  id         String   @id @default(uuid())
-  name       String
-  type       StoreType
-  created_at DateTime    @default(now())
-  updated_at DateTime    @default(now())
-  users      User[]
-  products   Product[]
-  clients    Client[]
-  tickets    Ticket[]
-  financial  Financial[]
-  purchases  Purchase[]
-  sales      Sale[]
+  id             String          @id @default(uuid())
+  name           String
+  type           StoreType
+  created_at     DateTime        @default(now())
+  updated_at     DateTime        @updatedAt
+  users          User[]
+  products       Product[]
+  clients        Client[]
+  tickets        Ticket[]
+  financial      Financial[]
+  purchases      Purchase[]
+  sales          Sale[]
   administrators Administrator[]
 
   @@map("stores")
@@ -213,13 +214,13 @@ model Sale {
 }
 
 model Administrator {
-  id        String   @id @default(uuid())
-  name      String
-  email     String   @unique
-  storeId   String
+  id         String   @id @default(uuid())
+  name       String
+  email      String   @unique
+  storeId    String
   created_at DateTime @default(now())
   updated_at DateTime @default(now())
-  store     Store    @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  store      Store    @relation(fields: [storeId], references: [id], onDelete: Cascade)
 
   @@map("administrators")
 }
