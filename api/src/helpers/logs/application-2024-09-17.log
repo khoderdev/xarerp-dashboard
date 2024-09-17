@@ -99,3 +99,27 @@
 2024-09-17T06:22:45.107Z [info]: GET /v1/stores/?page=0&q= 304 1016ms
 2024-09-17T06:35:17.235Z [info]: GET /api 200 3ms
 2024-09-17T06:35:17.597Z [info]: GET /favicon.ico 401 2ms
+2024-09-17T08:25:04.316Z [info]: Server is running on port 3333
+2024-09-17T08:25:09.430Z [info]: POST /validate 500 1944ms
+2024-09-17T08:25:10.863Z [info]: POST /validate 500 3393ms
+2024-09-17T08:28:16.905Z [info]: Server is running on port 3333
+2024-09-17T08:30:55.497Z [info]: POST /login 500 269ms
+2024-09-17T08:31:35.045Z [info]: POST /login 500 14ms
+2024-09-17T08:32:08.369Z [info]: POST /login 500 14ms
+2024-09-17T08:33:30.241Z [info]: POST /login 500 19ms
+2024-09-17T08:34:18.223Z [info]: POST /login 500 15ms
+2024-09-17T08:34:20.019Z [info]: POST /login 500 12ms
+2024-09-17T08:34:20.146Z [info]: POST /login 500 12ms
+2024-09-17T08:34:20.289Z [info]: POST /login 500 10ms
+2024-09-17T08:34:20.421Z [info]: POST /login 500 13ms
+2024-09-17T08:34:20.542Z [info]: POST /login 500 8ms
+2024-09-17T08:34:20.673Z [info]: POST /login 500 7ms
+2024-09-17T08:34:20.790Z [info]: POST /login 500 8ms
+2024-09-17T08:34:20.909Z [info]: POST /login 500 8ms
+2024-09-17T08:34:21.075Z [info]: POST /login 500 9ms
+2024-09-17T08:34:21.157Z [info]: POST /login 500 10ms
+2024-09-17T08:34:21.354Z [info]: POST /login 500 7ms
+2024-09-17T08:34:21.449Z [info]: POST /login 500 11ms
+2024-09-17T08:35:22.293Z [info]: POST /login 500 10ms
+2024-09-17T08:35:26.666Z [info]: POST /login 500 12ms
+2024-09-17T08:35:44.409Z [info]: POST /login 500 8ms
