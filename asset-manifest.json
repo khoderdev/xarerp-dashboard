@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/xarerp-dashboard/static/css/main.4dee29ba.css",
+    "main.js": "/xarerp-dashboard/static/js/main.d0459a5d.js",
+    "static/js/453.258b012d.chunk.js": "/xarerp-dashboard/static/js/453.258b012d.chunk.js",
+    "index.html": "/xarerp-dashboard/index.html",
+    "main.4dee29ba.css.map": "/xarerp-dashboard/static/css/main.4dee29ba.css.map",
+    "main.d0459a5d.js.map": "/xarerp-dashboard/static/js/main.d0459a5d.js.map",
+    "453.258b012d.chunk.js.map": "/xarerp-dashboard/static/js/453.258b012d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4dee29ba.css",
+    "static/js/main.d0459a5d.js"
+  ]
+}
