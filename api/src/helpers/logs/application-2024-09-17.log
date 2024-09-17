@@ -1,1 +1,25 @@
 2024-09-17T00:56:58.086Z [info]: Server is running on port 3333
+2024-09-17T01:04:11.412Z [info]: OPTIONS /validate 204 6ms
+2024-09-17T01:04:11.429Z [error]: Validation failed: jwt expired, Stack: TokenExpiredError: jwt expired
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:152:21
+    at getSecret (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:90:14)
+    at module.exports (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:94:10)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:44:11
+    at Generator.next (<anonymous>)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:4:12)
+    at validateToken (C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:34:68)
+    at Layer.handle [as handle_request] (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\express\lib\router\layer.js:95:5)
+2024-09-17T01:04:11.434Z [info]: POST /validate 401 19ms
+2024-09-17T01:04:35.266Z [info]: OPTIONS /login 204 1ms
+2024-09-17T01:04:37.222Z [info]: POST /login 200 1952ms
+2024-09-17T01:04:37.307Z [info]: OPTIONS /v1/dashboard/7 204 2ms
+2024-09-17T01:04:39.325Z [info]: POST /validate 200 1271ms
+2024-09-17T01:04:40.361Z [info]: GET /v1/dashboard/7 200 969ms
+2024-09-17T01:04:41.828Z [info]: OPTIONS /v1/dashboard/15 204 1ms
+2024-09-17T01:04:42.418Z [info]: GET /v1/dashboard/15 200 586ms
+2024-09-17T01:04:42.638Z [info]: OPTIONS /v1/dashboard/30 204 1ms
+2024-09-17T01:04:43.204Z [info]: GET /v1/dashboard/30 200 564ms
+2024-09-17T01:04:52.045Z [info]: POST /validate 200 108ms
+2024-09-17T01:04:52.598Z [info]: GET /v1/dashboard/30 304 656ms
