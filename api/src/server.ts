@@ -94,11 +94,40 @@ const server = express();
 const morganFormat =
   ":method :url :status :res[content-length] - :response-time ms";
 
+// server.use((req, res, next) => {
+//   res.setHeader(
+//     "Access-Control-Allow-Origin",
+//     "https://inventory-manager-8oa2pca3r-khoderdevs-projects.vercel.app"
+//   );
+//   res.setHeader(
+//     "Access-Control-Allow-Methods",
+//     "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS,CONNECT,TRACE"
+//   );
+//   res.setHeader(
+//     "Access-Control-Allow-Headers",
+//     "Content-Type, Authorization, X-Content-Type-Options, Accept, X-Requested-With, Origin, Access-Control-Request-Method, Access-Control-Request-Headers"
+//   );
+//   res.setHeader("Access-Control-Allow-Credentials", "true");
+//   res.setHeader("Access-Control-Allow-Private-Network", "true");
+//   res.setHeader("Access-Control-Max-Age", 7200);
+
+//   next();
+// });
+
+const allowedOrigins = [
+  "https://inventory-manager-8oa2pca3r-khoderdevs-projects.vercel.app",
+  "https://khoderdev.github.io/xarerp-dashboard",
+  "https://khoderdev.github.io",
+  "http://localhost:3000",
+];
+
 server.use((req, res, next) => {
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://inventory-manager-8oa2pca3r-khoderdevs-projects.vercel.app"
-  );
+  const origin = req.headers.origin;
+
+  if (origin && allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+
   res.setHeader(
     "Access-Control-Allow-Methods",
     "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS,CONNECT,TRACE"
