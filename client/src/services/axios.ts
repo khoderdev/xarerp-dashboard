@@ -1,8 +1,10 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://5987-185-76-176-30.ngrok-free.app",
+  baseURL: process.env.REACT_APP_API_BASE_URL, 
+  // baseURL: "https://5987-185-76-176-30.ngrok-free.app",
   // baseURL: "https://inventory-manager-6w3b.onrender.com",
+  // baseURL: "http://localhost:3333",
 });
 
 // Function to set the Bearer token
