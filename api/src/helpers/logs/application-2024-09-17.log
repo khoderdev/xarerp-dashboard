@@ -23,3 +23,11 @@
 2024-09-17T01:04:43.204Z [info]: GET /v1/dashboard/30 200 564ms
 2024-09-17T01:04:52.045Z [info]: POST /validate 200 108ms
 2024-09-17T01:04:52.598Z [info]: GET /v1/dashboard/30 304 656ms
+2024-09-17T01:48:33.343Z [info]: Server is running on port 3333
+2024-09-17T01:48:42.615Z [info]: GET / 401 10ms
+2024-09-17T01:48:42.766Z [info]: GET /favicon.ico 401 2ms
+2024-09-17T01:49:14.249Z [info]: OPTIONS /login 204 2ms
+2024-09-17T01:49:17.267Z [info]: POST /login 200 2855ms
+2024-09-17T01:49:17.561Z [info]: OPTIONS /v1/dashboard/7 204 1ms
+2024-09-17T01:49:18.045Z [info]: OPTIONS /validate 204 1ms
+2024-09-17T01:49:18.407Z [info]: POST /validate 200 178ms
