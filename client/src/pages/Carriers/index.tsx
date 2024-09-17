@@ -144,7 +144,7 @@
 //           title={state.modalRegisters.editingRegister ? 'Editar transportadora' : state.modalRegisters.deletingRegister ? 'Delete transportadora' : 'Cadastrar transportadora'}
 //         >
 //           {state.modalRegisters.deletingRegister ? (
-//             <p>Esse processo é irreversível e excluirá também outros dados que estejam relacionados a esse registro. Deseja continuar?</p>
+//             <p>This process is irreversible and will also delete other data related to this record. Do you wish to continue?</p>
 //           ) : (
 //             <>
 //               <Input label="Name" placeholder="Transportadora 1" value={name} onChange={(e: any) => setName(e.target.value)} />

@@ -24,7 +24,7 @@ export const getAll = async (req: Request, res: Response) => {
         unity: tickets[1][i].unity.name,
         user_id: tickets[1][i].user_id,
         user: tickets[1][i].user.name,
-        status: tickets[1][i].status === 0 ? 'Pendente' : tickets[1][i].status === 1 ? 'Em andamento' : 'Resolvido',
+        status: tickets[1][i].status === 0 ? 'Pending' : tickets[1][i].status === 1 ? 'In progress' : 'Solved',
         created_at: tickets[1][i].created_at,
         updated_at: tickets[1][i].updated_at,
       })

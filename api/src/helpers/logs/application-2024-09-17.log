@@ -73,3 +73,15 @@
 2024-09-17T04:09:27.073Z [info]: Server is running on port 3333
 2024-09-17T04:09:28.709Z [info]: Server is running on port 3333
 2024-09-17T04:15:16.134Z [info]: Server is running on port 3333
+2024-09-17T04:19:12.151Z [error]: Validation failed: invalid signature, Stack: JsonWebTokenError: invalid signature
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:133:19
+    at getSecret (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:90:14)
+    at module.exports (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:94:10)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:119:11
+    at Generator.next (<anonymous>)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:12:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:8:12)
+    at validateToken (C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:107:68)
+    at Layer.handle [as handle_request] (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\express\lib\router\layer.js:95:5)
+2024-09-17T04:19:12.159Z [info]: POST /validate 401 23ms
