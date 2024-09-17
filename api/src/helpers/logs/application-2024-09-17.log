@@ -31,3 +31,43 @@
 2024-09-17T01:49:17.561Z [info]: OPTIONS /v1/dashboard/7 204 1ms
 2024-09-17T01:49:18.045Z [info]: OPTIONS /validate 204 1ms
 2024-09-17T01:49:18.407Z [info]: POST /validate 200 178ms
+2024-09-17T03:34:45.875Z [info]: GET / 401 12ms
+2024-09-17T03:34:46.159Z [info]: GET /favicon.ico 401 3ms
+2024-09-17T03:35:44.148Z [info]: GET / 401 1ms
+2024-09-17T03:35:44.322Z [info]: GET /favicon.ico 401 1ms
+2024-09-17T03:36:47.015Z [info]: OPTIONS /validate 204 15ms
+2024-09-17T03:36:47.306Z [error]: Validation failed: jwt expired, Stack: TokenExpiredError: jwt expired
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:152:21
+    at getSecret (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:90:14)
+    at module.exports (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\jsonwebtoken\verify.js:94:10)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:119:11
+    at Generator.next (<anonymous>)
+    at C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:12:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:8:12)
+    at validateToken (C:\Users\Admin\Desktop\xarerp-dashboard\api\src\middlewares\auth\ensureAuthenticated.ts:107:68)
+    at Layer.handle [as handle_request] (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\express\lib\router\layer.js:95:5)
+2024-09-17T03:36:47.310Z [info]: POST /validate 401 234ms
+2024-09-17T03:36:57.945Z [info]: OPTIONS /login 204 1ms
+2024-09-17T03:36:59.811Z [info]: POST /login 200 1850ms
+2024-09-17T03:36:59.869Z [info]: OPTIONS /v1/dashboard/7 204 0ms
+2024-09-17T03:37:01.403Z [info]: POST /validate 200 1255ms
+2024-09-17T03:37:02.503Z [info]: GET /v1/dashboard/7 200 1045ms
+2024-09-17T03:40:39.741Z [info]: POST /validate 200 163ms
+2024-09-17T03:40:40.346Z [info]: GET /v1/dashboard/7 304 561ms
+2024-09-17T03:40:49.375Z [info]: POST /login 200 429ms
+2024-09-17T03:40:49.679Z [info]: POST /validate 200 176ms
+2024-09-17T03:40:50.269Z [info]: GET /v1/dashboard/7 200 563ms
+2024-09-17T03:50:46.485Z [info]: OPTIONS /validate 204 2ms
+2024-09-17T03:50:48.018Z [info]: POST /validate 200 1366ms
+2024-09-17T03:50:48.205Z [info]: OPTIONS /v1/dashboard/7 204 1ms
+2024-09-17T03:50:57.939Z [info]: POST /validate 200 91ms
+2024-09-17T03:58:22.725Z [info]: OPTIONS /login 204 0ms
+2024-09-17T03:58:24.564Z [info]: POST /login 200 1670ms
+2024-09-17T03:58:24.776Z [info]: OPTIONS /v1/dashboard/7 204 1ms
+2024-09-17T03:58:25.044Z [info]: OPTIONS /validate 204 1ms
+2024-09-17T03:58:25.400Z [info]: POST /validate 200 175ms
+2024-09-17T03:58:45.269Z [info]: OPTIONS /v1/stores/?page=0&q= 204 0ms
+2024-09-17T03:58:45.848Z [info]: OPTIONS /v1/products/?page=0&q= 204 1ms
+2024-09-17T04:09:04.435Z [info]: Server is running on port 3333
+2024-09-17T04:09:27.073Z [info]: Server is running on port 3333
