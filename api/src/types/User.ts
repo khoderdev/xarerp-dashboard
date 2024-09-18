@@ -3,7 +3,7 @@ export type User = {
   name: string;
   email: string;
   password: string;
-  unity: string;
+  Store: string;
   position: string;
   permissions: string;
   active: boolean;

@@ -75,7 +75,7 @@ const Menu = () => {
     {
       title: "Orders",
       icon: "Purchase",
-      link: "/purchases",
+      link: "/orders",
       role: "view_purchase",
     },
 

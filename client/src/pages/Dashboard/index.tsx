@@ -60,7 +60,7 @@ const Dashboard = () => {
                   <C.ResumeBalanceArea>
                     <ResumeBalance value={data.result.sales.profit} type="Profit" />
                     <ResumeBalance value={data.result.sales.received} type="Received" />
-                    <ResumeBalance value={data.result.sales.invested} type="Invested" />
+                    {/* <ResumeBalance value={data.result.sales.invested} type="Invested" /> */}
                   </C.ResumeBalanceArea>
                   <C.SalesDaily>
                     <LineChartXR

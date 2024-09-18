@@ -108,7 +108,7 @@ function App () {
                 </RequireAuth>}
               />
 
-              <Route path="/purchases" element={
+              <Route path="/orders" element={
                 <RequireAuth role={"view_purchase"}>
                   <Purchases />
                 </RequireAuth>}

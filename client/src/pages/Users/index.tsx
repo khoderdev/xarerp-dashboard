@@ -60,7 +60,7 @@ const Users = () => {
         width: 380,
       },
     ],
-    tableTitle: "Registered users",
+    tableTitle: "Users",
   };
 
   const dataOptionsArea = [
@@ -215,10 +215,10 @@ const Users = () => {
           dataKey="user"
           title={   
             state.modalRegisters.editingRegister
-              ? "Edit user"
+              ? "Edit User"
               : state.modalRegisters.deletingRegister
-              ? "Delete user"
-              : "Register user"
+              ? "Delete User"
+              : "Add New User"
           }
         >
           {state.modalRegisters.deletingRegister ? (
@@ -243,7 +243,7 @@ const Users = () => {
               />
 
               <Select
-                label="Store"
+                label="Warehouse"
                 dataOptions={stores}
                 value={unity}
                 onChange={(e: any) => setUnity(e.target.value)}

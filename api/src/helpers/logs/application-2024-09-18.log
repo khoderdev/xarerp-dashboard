@@ -47,3 +47,199 @@
 2024-09-17T21:20:12.368Z [info]: GET /v1/categories/?page=0&q= 304 80ms
 2024-09-17T21:20:12.390Z [info]: GET /v1/stores/?page=0&q= 304 16ms
 2024-09-17T21:20:12.417Z [info]: GET /v1/providers/?page=0&q= 304 17ms
+2024-09-18T05:27:28.194Z [info]: Server is running on port 3333
+2024-09-18T05:30:06.966Z [info]: OPTIONS /validate 204 8ms
+2024-09-18T05:30:07.248Z [error]: Validation failed: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\Admin\Desktop\xarerp-dashboard\api\src\modules\users\services\getUserService.ts:6:30
+
+  3 export const getUserService = {
+  4 
+  5   findOne: async (id: string) => {
+→ 6     return await prisma.user.findUnique(
+The column `users.branch_id` does not exist in the current database., Stack: PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\Admin\Desktop\xarerp-dashboard\api\src\modules\users\services\getUserService.ts:6:30
+
+  3 export const getUserService = {
+  4 
+  5   findOne: async (id: string) => {
+→ 6     return await prisma.user.findUnique(
+The column `users.branch_id` does not exist in the current database.
+    at Ln.handleRequestError (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\@prisma\client\runtime\library.js:121:7753)
+    at Ln.handleAndLogRequestError (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\@prisma\client\runtime\library.js:121:7061)
+    at Ln.request (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\@prisma\client\runtime\library.js:121:6745)
+    at l (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\@prisma\client\runtime\library.js:130:9633)
+2024-09-18T05:30:07.281Z [info]: POST /validate 401 309ms
+2024-09-18T05:30:10.446Z [info]: OPTIONS /login 204 1ms
+2024-09-18T05:30:10.518Z [info]: POST /login 500 67ms
+2024-09-18T05:30:40.957Z [info]: OPTIONS /login 204 2ms
+2024-09-18T05:30:40.972Z [info]: POST /login 500 9ms
+2024-09-18T05:30:47.192Z [info]: OPTIONS /login 204 1ms
+2024-09-18T05:30:47.205Z [info]: POST /login 500 9ms
+2024-09-18T05:30:54.461Z [info]: OPTIONS /login 204 2ms
+2024-09-18T05:30:54.473Z [info]: POST /login 500 8ms
+2024-09-18T05:30:55.348Z [info]: OPTIONS /login 204 1ms
+2024-09-18T05:30:55.366Z [info]: POST /login 500 14ms
+2024-09-18T05:30:55.757Z [info]: OPTIONS /login 204 2ms
+2024-09-18T05:30:55.771Z [info]: POST /login 500 9ms
+2024-09-18T05:30:55.905Z [info]: OPTIONS /login 204 1ms
+2024-09-18T05:30:55.920Z [info]: POST /login 500 11ms
+2024-09-18T05:31:16.617Z [info]: OPTIONS /login 204 1ms
+2024-09-18T05:31:16.635Z [info]: POST /login 500 16ms
+2024-09-18T05:33:05.929Z [info]: Server is running on port 3333
+2024-09-18T05:33:08.201Z [info]: Server is running on port 3333
+2024-09-18T05:33:20.323Z [info]: Server is running on port 3333
+2024-09-18T05:33:22.422Z [info]: OPTIONS /login 204 4ms
+2024-09-18T05:33:22.598Z [info]: POST /login 500 170ms
+2024-09-18T05:33:23.273Z [info]: OPTIONS /login 204 1ms
+2024-09-18T05:33:23.297Z [info]: POST /login 500 19ms
+2024-09-18T05:33:26.616Z [info]: OPTIONS /login 204 1ms
+2024-09-18T05:33:26.631Z [info]: POST /login 500 12ms
+2024-09-18T05:33:29.411Z [info]: Server is running on port 3333
+2024-09-18T05:33:29.438Z [info]: OPTIONS /login 204 7ms
+2024-09-18T05:33:29.665Z [info]: POST /login 500 224ms
+2024-09-18T05:33:32.516Z [info]: OPTIONS /login 204 1ms
+2024-09-18T05:33:32.532Z [info]: POST /login 500 13ms
+2024-09-18T05:33:33.296Z [info]: OPTIONS /login 204 1ms
+2024-09-18T05:33:33.308Z [info]: POST /login 500 9ms
+2024-09-18T05:33:33.746Z [info]: OPTIONS /login 204 1ms
+2024-09-18T05:33:33.764Z [info]: POST /login 500 14ms
+2024-09-18T05:33:33.913Z [info]: OPTIONS /login 204 2ms
+2024-09-18T05:33:33.932Z [info]: POST /login 500 14ms
+2024-09-18T05:33:34.050Z [info]: OPTIONS /login 204 1ms
+2024-09-18T05:33:34.062Z [info]: POST /login 500 8ms
+2024-09-18T05:33:34.206Z [info]: OPTIONS /login 204 1ms
+2024-09-18T05:33:34.221Z [info]: POST /login 500 11ms
+2024-09-18T05:33:34.365Z [info]: OPTIONS /login 204 1ms
+2024-09-18T05:33:34.381Z [info]: POST /login 500 13ms
+2024-09-18T05:34:08.437Z [info]: Server is running on port 3333
+2024-09-18T05:34:22.324Z [info]: Server is running on port 3333
+2024-09-18T05:35:19.417Z [info]: Server is running on port 3333
+2024-09-18T05:35:22.723Z [info]: OPTIONS /login 204 5ms
+2024-09-18T05:35:22.936Z [info]: POST /login 200 209ms
+2024-09-18T05:35:22.993Z [info]: OPTIONS /v1/dashboard/7 204 1ms
+2024-09-18T05:35:23.073Z [info]: GET /v1/dashboard/7 200 42ms
+2024-09-18T05:35:23.995Z [info]: OPTIONS /validate 204 1ms
+2024-09-18T05:35:24.005Z [info]: POST /validate 200 4ms
+2024-09-18T05:35:24.081Z [info]: OPTIONS /v1/dashboard/7 204 1ms
+2024-09-18T05:35:24.147Z [info]: GET /v1/dashboard/7 200 28ms
+2024-09-18T05:35:35.418Z [info]: OPTIONS /validate 204 2ms
+2024-09-18T05:35:35.427Z [info]: POST /validate 200 7ms
+2024-09-18T05:35:35.520Z [info]: OPTIONS /v1/dashboard/7 204 1ms
+2024-09-18T05:35:35.571Z [info]: GET /v1/dashboard/7 200 31ms
+2024-09-18T05:35:43.785Z [info]: OPTIONS /login 204 0ms
+2024-09-18T05:35:43.901Z [info]: POST /login 200 112ms
+2024-09-18T05:35:43.988Z [info]: OPTIONS /v1/dashboard/7 204 3ms
+2024-09-18T05:35:44.579Z [info]: OPTIONS /validate 204 1ms
+2024-09-18T05:35:44.585Z [info]: POST /validate 200 4ms
+2024-09-18T05:35:44.686Z [info]: OPTIONS /v1/dashboard/7 204 1ms
+2024-09-18T05:35:44.762Z [info]: GET /v1/dashboard/7 200 13ms
+2024-09-18T05:36:19.321Z [info]: Server is running on port 3333
+2024-09-18T05:36:39.728Z [info]: POST /validate 200 179ms
+2024-09-18T05:36:40.961Z [info]: GET /v1/dashboard/7 304 40ms
+2024-09-18T05:36:41.107Z [info]: OPTIONS /validate 204 2ms
+2024-09-18T05:36:41.116Z [info]: POST /validate 200 5ms
+2024-09-18T05:36:41.218Z [info]: OPTIONS /v1/dashboard/7 204 1ms
+2024-09-18T05:36:41.331Z [info]: GET /v1/dashboard/7 200 27ms
+2024-09-18T05:36:49.199Z [info]: OPTIONS /login 204 1ms
+2024-09-18T05:36:49.323Z [info]: POST /login 200 121ms
+2024-09-18T05:36:49.395Z [info]: OPTIONS /v1/dashboard/7 204 2ms
+2024-09-18T05:36:50.134Z [info]: OPTIONS /validate 204 0ms
+2024-09-18T05:36:50.140Z [info]: POST /validate 200 3ms
+2024-09-18T05:36:50.249Z [info]: OPTIONS /v1/dashboard/7 204 1ms
+2024-09-18T05:36:50.309Z [info]: GET /v1/dashboard/7 200 20ms
+2024-09-18T05:36:57.404Z [info]: GET /v1/stores/?page=0&q= 200 25ms
+2024-09-18T05:36:58.821Z [info]: GET /v1/products/?page=0&q= 200 39ms
+2024-09-18T05:36:59.981Z [info]: GET /v1/purchases/?page=0&q= 304 18ms
+2024-09-18T05:37:00.839Z [info]: GET /v1/users/?page=0&q= 200 14ms
+2024-09-18T05:37:01.772Z [info]: GET /v1/purchases/?page=0&q= 304 9ms
+2024-09-18T05:37:02.798Z [info]: GET /v1/users/?page=0&q= 304 12ms
+2024-09-18T05:37:03.770Z [info]: GET /v1/stores/?page=0&q= 304 12ms
+2024-09-18T05:37:08.466Z [info]: OPTIONS /v1/users/279a648b-f70c-470f-a7be-f5a9d73e236e 204 0ms
+2024-09-18T05:37:08.493Z [info]: PUT /v1/users/279a648b-f70c-470f-a7be-f5a9d73e236e 200 23ms
+2024-09-18T05:37:08.589Z [info]: GET /v1/users/?page=0&q= 200 8ms
+2024-09-18T05:37:12.713Z [info]: GET /v1/dashboard/7 200 13ms
+2024-09-18T05:37:15.687Z [info]: POST /validate 200 3ms
+2024-09-18T05:37:15.836Z [info]: GET /v1/dashboard/7 304 27ms
+2024-09-18T05:37:17.846Z [info]: GET /v1/stores/?page=0&q= 304 7ms
+2024-09-18T05:37:19.356Z [info]: GET /v1/dashboard/7 304 10ms
+2024-09-18T05:37:19.920Z [info]: GET /v1/stores/?page=0&q= 304 11ms
+2024-09-18T05:37:20.346Z [info]: GET /v1/dashboard/7 304 13ms
+2024-09-18T05:37:20.649Z [info]: GET /v1/stores/?page=0&q= 304 7ms
+2024-09-18T05:37:21.627Z [info]: GET /v1/products/?page=0&q= 304 13ms
+2024-09-18T05:37:22.948Z [info]: GET /v1/purchases/?page=0&q= 304 10ms
+2024-09-18T05:37:23.628Z [info]: GET /v1/users/?page=0&q= 304 8ms
+2024-09-18T05:37:24.246Z [info]: GET /v1/purchases/?page=0&q= 304 8ms
+2024-09-18T05:37:25.150Z [info]: GET /v1/stores/?page=0&q= 304 6ms
+2024-09-18T05:37:25.160Z [info]: GET /v1/providers/?page=0&q= 200 6ms
+2024-09-18T05:37:25.171Z [info]: GET /v1/products/?page=0&q= 304 6ms
+2024-09-18T05:37:37.846Z [info]: OPTIONS /v1/purchases 204 1ms
+2024-09-18T05:37:37.880Z [info]: POST /v1/purchases 201 31ms
+2024-09-18T05:37:37.970Z [info]: GET /v1/purchases/?page=0&q= 200 19ms
+2024-09-18T05:37:39.653Z [info]: GET /v1/users/?page=0&q= 304 12ms
+2024-09-18T05:37:42.023Z [info]: GET /v1/stores/?page=0&q= 304 5ms
+2024-09-18T05:39:00.389Z [info]: GET /v1/purchases/?page=0&q= 304 14ms
+2024-09-18T05:39:02.352Z [info]: GET /v1/stores/?page=0&q= 304 5ms
+2024-09-18T05:39:02.364Z [info]: GET /v1/providers/?page=0&q= 304 6ms
+2024-09-18T05:39:02.377Z [info]: GET /v1/products/?page=0&q= 304 7ms
+2024-09-18T05:39:13.199Z [info]: POST /v1/purchases 201 19ms
+2024-09-18T05:39:13.345Z [info]: GET /v1/purchases/?page=0&q= 200 8ms
+2024-09-18T05:39:15.485Z [info]: GET /v1/stores/?page=0&q= 304 11ms
+2024-09-18T05:39:16.601Z [info]: GET /v1/products/?page=0&q= 304 11ms
+2024-09-18T05:39:17.794Z [info]: GET /v1/dashboard/7 304 12ms
+2024-09-18T07:06:08.810Z [info]: OPTIONS /login 204 5ms
+2024-09-18T07:06:09.110Z [info]: POST /login 400 261ms
+2024-09-18T07:06:29.548Z [info]: POST /login 400 5ms
+2024-09-18T07:06:33.090Z [info]: POST /login 400 7ms
+2024-09-18T07:06:40.411Z [info]: POST /login 200 92ms
+2024-09-18T07:06:40.453Z [info]: OPTIONS /v1/dashboard/7 204 3ms
+2024-09-18T07:06:40.484Z [info]: GET /v1/dashboard/7 304 23ms
+2024-09-18T07:06:41.030Z [info]: OPTIONS /validate 204 1ms
+2024-09-18T07:06:41.040Z [info]: POST /validate 200 8ms
+2024-09-18T07:06:41.096Z [info]: GET /v1/dashboard/7 304 14ms
+2024-09-18T07:06:43.694Z [info]: OPTIONS /v1/users/?page=0&q= 204 1ms
+2024-09-18T07:06:43.710Z [info]: GET /v1/users/?page=0&q= 304 10ms
+2024-09-18T07:06:45.539Z [info]: OPTIONS /v1/stores/?page=0&q= 204 0ms
+2024-09-18T07:06:45.549Z [info]: GET /v1/stores/?page=0&q= 304 6ms
+2024-09-18T07:07:06.347Z [info]: OPTIONS /v1/users 204 0ms
+2024-09-18T07:07:06.458Z [info]: POST /v1/users 201 109ms
+2024-09-18T07:07:06.533Z [info]: GET /v1/users/?page=0&q= 200 9ms
+2024-09-18T07:07:37.000Z [info]: GET /v1/stores/?page=0&q= 304 6ms
+2024-09-18T07:07:47.726Z [info]: POST /validate 200 4ms
+2024-09-18T07:07:47.831Z [info]: GET /v1/users/?page=0&q= 304 9ms
+2024-09-18T07:08:00.512Z [info]: POST /validate 200 3ms
+2024-09-18T07:08:00.600Z [info]: GET /v1/users/?page=0&q= 304 7ms
+2024-09-18T07:08:02.839Z [info]: OPTIONS /v1/purchases/?page=0&q= 204 1ms
+2024-09-18T07:08:02.874Z [info]: GET /v1/purchases/?page=0&q= 304 30ms
+2024-09-18T07:08:03.745Z [info]: GET /v1/stores/?page=0&q= 304 13ms
+2024-09-18T07:08:04.254Z [info]: OPTIONS /v1/products/?page=0&q= 204 0ms
+2024-09-18T07:08:04.281Z [info]: GET /v1/products/?page=0&q= 304 18ms
+2024-09-18T07:08:05.567Z [info]: GET /v1/purchases/?page=0&q= 304 11ms
+2024-09-18T07:08:31.234Z [info]: GET /v1/products/?page=0&q= 304 10ms
+2024-09-18T07:08:31.683Z [info]: GET /v1/purchases/?page=0&q= 304 11ms
+2024-09-18T07:08:34.013Z [info]: GET /v1/products/?page=0&q= 304 18ms
+2024-09-18T07:08:34.706Z [info]: GET /v1/stores/?page=0&q= 304 13ms
+2024-09-18T07:08:35.890Z [info]: GET /v1/dashboard/7 304 13ms
+2024-09-18T07:08:37.046Z [info]: GET /v1/products/?page=0&q= 304 14ms
+2024-09-18T07:08:37.950Z [info]: GET /v1/dashboard/7 304 9ms
+2024-09-18T07:08:52.601Z [info]: GET /v1/purchases/?page=0&q= 304 10ms
+2024-09-18T07:08:53.947Z [info]: GET /v1/users/?page=0&q= 304 12ms
+2024-09-18T07:08:54.620Z [info]: GET /v1/products/?page=0&q= 304 12ms
+2024-09-18T07:08:55.463Z [info]: GET /v1/stores/?page=0&q= 304 12ms
+2024-09-18T07:08:56.308Z [info]: GET /v1/dashboard/7 304 14ms
+2024-09-18T07:08:57.609Z [info]: GET /v1/purchases/?page=0&q= 304 13ms
+2024-09-18T07:08:58.256Z [info]: GET /v1/stores/?page=0&q= 304 8ms
+2024-09-18T07:08:58.265Z [info]: OPTIONS /v1/providers/?page=0&q= 204 0ms
+2024-09-18T07:08:58.277Z [info]: GET /v1/providers/?page=0&q= 304 7ms
+2024-09-18T07:08:58.292Z [info]: GET /v1/products/?page=0&q= 304 10ms
+2024-09-18T07:09:23.981Z [info]: POST /validate 200 4ms
+2024-09-18T07:09:24.082Z [info]: GET /v1/purchases/?page=0&q= 304 19ms
+2024-09-18T07:09:25.811Z [info]: GET /v1/stores/?page=0&q= 304 5ms
+2024-09-18T07:09:25.824Z [info]: GET /v1/providers/?page=0&q= 304 8ms
+2024-09-18T07:09:25.840Z [info]: GET /v1/products/?page=0&q= 304 10ms
+2024-09-18T07:09:52.844Z [info]: GET /v1/stores/?page=0&q= 304 15ms
+2024-09-18T07:09:54.542Z [info]: GET /v1/dashboard/7 304 14ms
+2024-09-18T07:09:59.859Z [info]: GET /v1/stores/?page=0&q= 304 8ms
+2024-09-18T07:10:00.735Z [info]: GET /v1/products/?page=0&q= 304 10ms
+2024-09-18T07:10:01.829Z [info]: GET /v1/purchases/?page=0&q= 304 13ms

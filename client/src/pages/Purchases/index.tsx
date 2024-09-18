@@ -64,7 +64,7 @@ const Purchases = () => {
         width: 380
       }
     ],
-    tableTitle: 'Registered purchases'
+    tableTitle: 'Orders'
   }
 
   const handleNewPurchase = async () => {
@@ -236,7 +236,7 @@ const Purchases = () => {
           endpoint={state.modalRegisters.editingRegister ? 'purchases' : 'purchases'}
           type={state.modalRegisters.editingRegister ? 'update' : state.modalRegisters.deletingRegister ? 'delete' : 'create'}
           dataKey="purchase"
-          title={state.modalRegisters.editingRegister ? 'Edit Purchase' : state.modalRegisters.deletingRegister ? 'Delete Purchase' : 'Add New Purchase'}
+          title={state.modalRegisters.editingRegister ? 'Edit Order' : state.modalRegisters.deletingRegister ? 'Delete Order' : 'Add New Order'}
         >
           {state.modalRegisters.deletingRegister ? (
             <p>This process is irreversible and will also delete other data related to this record. Do you wish to continue?</p>
