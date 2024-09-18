@@ -126,7 +126,7 @@ const Stores = () => {
 
       {state.modalRegisters.openedModal &&
         <ModalRegisters
-          endpoint={state.modalRegisters.editingRegister ? 'Unit' : 'Unit'}
+          endpoint={state.modalRegisters.editingRegister ? 'store' : 'store'}
           type={state.modalRegisters.editingRegister ? 'update' : state.modalRegisters.deletingRegister ? 'delete' : 'create'}
           dataKey="store"
           title={state.modalRegisters.editingRegister ? 'Edit Unit' : state.modalRegisters.deletingRegister ? 'Delete Unit' : 'Add New Unit'}
