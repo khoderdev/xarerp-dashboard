@@ -245,3 +245,4 @@ The column `users.branch_id` does not exist in the current database.
 2024-09-18T07:10:01.829Z [info]: GET /v1/purchases/?page=0&q= 304 13ms
 2024-09-18T07:17:28.879Z [info]: Server is running on port 3333
 2024-09-18T07:19:45.350Z [info]: Server is running on port 3333
+2024-09-18T07:22:43.485Z [info]: Server is running on port 3333

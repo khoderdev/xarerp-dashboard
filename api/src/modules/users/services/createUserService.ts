@@ -16,7 +16,7 @@ export const createUserService = {
         active: data.active,
         unity: {
           connect: {
-            id: data.unity
+            id: data.unity_id
           }
         }
       }
