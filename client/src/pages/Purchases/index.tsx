@@ -64,7 +64,7 @@ const Purchases = () => {
         width: 380
       }
     ],
-    tableTitle: 'Registered purchases'
+    tableTitle: 'Orders'
   }
 
   const handleNewPurchase = async () => {

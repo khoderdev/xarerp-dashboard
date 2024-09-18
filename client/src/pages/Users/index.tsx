@@ -60,7 +60,7 @@ const Users = () => {
         width: 380,
       },
     ],
-    tableTitle: "Registered users",
+    tableTitle: "Users",
   };
 
   const dataOptionsArea = [

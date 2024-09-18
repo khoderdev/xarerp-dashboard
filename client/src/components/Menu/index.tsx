@@ -70,14 +70,16 @@ const Menu = () => {
     //   link: "/clients",
     //   role: "view_client",
     // },
-    // { title: "Sales", icon: "Sale", link: "/sales", role: "view_sale" },
+    { title: "Sales", icon: "Sale", link: "/sales", role: "view_sale" },
 
     {
       title: "Orders",
       icon: "Purchase",
-      link: "/purchases",
+      link: "/orders",
       role: "view_purchase",
     },
+
+    { title: "Support", icon: "Ticket", link: "/tickets", role: "view_ticket" },
 
     { title: "Users", icon: "User", link: "/users", role: "view_user" },
   ];

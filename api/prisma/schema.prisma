@@ -7,31 +7,30 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Category {
-  id         String    @id @default(uuid())
-  title      String    @unique
-  created_at DateTime  @default(now())
-  updated_at DateTime  @default(now())
-  products   Product[]
+model User {
+  id          String      @id @default(uuid())
+  name        String
+  email       String      @unique
+  password    String
+  unity_id    String
+  position    String
+  permissions String
+  active      Boolean
+  created_at  DateTime    @default(now())
+  updated_at  DateTime    @default(now())
+  unity       Store       @relation(fields: [unity_id], references: [id], onDelete: Cascade)
+  products    Product[]
+  sellers     Seller[]
+  clients     Client[]
+  tickets     Ticket[]
+  financial   Financial[]
+  purchases   Purchase[]
 
-  @@map("categories")
-}
-
-model Carrier {
-  id         String   @id @default(uuid())
-  name       String   @unique
-  region     String
-  created_at DateTime @default(now())
-  updated_at DateTime @default(now())
-  sales      Sale[]
-
-  @@map("carriers")
+  @@map("users")
 }
 
 enum StoreType {
-  HEADQUARTER
   WAREHOUSE
-  FRANCHISE
   BRANCH
 }
 
@@ -53,39 +52,14 @@ model Store {
   @@map("stores")
 }
 
-model Provider {
-  id         String     @id @default(uuid())
-  name       String
-  email      String     @unique
-  tel        String     @unique
-  created_at DateTime   @default(now())
-  updated_at DateTime   @default(now())
+model Category {
+  id         String    @id @default(uuid())
+  title      String    @unique
+  created_at DateTime  @default(now())
+  updated_at DateTime  @default(now())
   products   Product[]
-  purchases  Purchase[]
 
-  @@map("providers")
-}
-
-model User {
-  id          String      @id @default(uuid())
-  name        String
-  email       String      @unique
-  password    String
-  unity_id    String
-  position    String
-  permissions String
-  active      Boolean
-  created_at  DateTime    @default(now())
-  updated_at  DateTime    @default(now())
-  unity       Store       @relation(fields: [unity_id], references: [id], onDelete: Cascade)
-  products    Product[]
-  sellers     Seller[]
-  clients     Client[]
-  tickets     Ticket[]
-  financial   Financial[]
-  purchases   Purchase[]
-
-  @@map("users")
+  @@map("categories")
 }
 
 model Product {
@@ -112,6 +86,39 @@ model Product {
   sales          Sale[]
 
   @@map("products")
+  
+}
+
+model Purchase {
+  id          String   @id @default(uuid())
+  user_id     String
+  unity_id    String
+  provider_id String
+  product_id  String
+  quantity    Int
+  unit_price  Int
+  status      Int
+  created_at  DateTime @default(now())
+  updated_at  DateTime @default(now())
+  user        User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  unity       Store    @relation(fields: [unity_id], references: [id], onDelete: Cascade)
+  provider    Provider @relation(fields: [provider_id], references: [id], onDelete: Cascade)
+  product     Product  @relation(fields: [product_id], references: [id], onDelete: Cascade)
+
+  @@map("purchases")
+}
+
+model Provider {
+  id         String     @id @default(uuid())
+  name       String
+  email      String     @unique
+  tel        String     @unique
+  created_at DateTime   @default(now())
+  updated_at DateTime   @default(now())
+  products   Product[]
+  purchases  Purchase[]
+
+  @@map("providers")
 }
 
 model Seller {
@@ -124,6 +131,17 @@ model Seller {
   sales      Sale[]
 
   @@map("sellers")
+}
+
+model Carrier {
+  id         String   @id @default(uuid())
+  name       String   @unique
+  region     String
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  sales      Sale[]
+
+  @@map("carriers")
 }
 
 model Client {
@@ -174,24 +192,6 @@ model Financial {
   @@map("financial")
 }
 
-model Purchase {
-  id          String   @id @default(uuid())
-  user_id     String
-  unity_id    String
-  provider_id String
-  product_id  String
-  quantity    Int
-  unit_price  Int
-  status      Int
-  created_at  DateTime @default(now())
-  updated_at  DateTime @default(now())
-  user        User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
-  unity       Store    @relation(fields: [unity_id], references: [id], onDelete: Cascade)
-  provider    Provider @relation(fields: [provider_id], references: [id], onDelete: Cascade)
-  product     Product  @relation(fields: [product_id], references: [id], onDelete: Cascade)
-
-  @@map("purchases")
-}
 
 model Sale {
   id         String   @id @default(uuid())
