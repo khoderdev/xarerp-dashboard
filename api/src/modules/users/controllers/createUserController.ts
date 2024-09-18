@@ -7,14 +7,14 @@ import { hash } from "bcrypt";
 
 export const create = async (req: Request, res: Response) => {
   try {
-    const { name, email, unity, position } = req.body;
+    const { name, email, unity_id, position } = req.body;
     const password = "1234";
 
-    if (!name || !email || !unity || !position) {
+    if (!name || !email || !unity_id || !position) {
       return res.status(400).json({ error: "Incomplete data" });
     }
 
-    const hasStore = await getStoreService.findOne(unity);
+    const hasStore = await getStoreService.findOne(unity_id);
 
     if (!hasStore) {
       return res.status(404).json({ error: "Store not found" });
@@ -186,7 +186,7 @@ export const create = async (req: Request, res: Response) => {
       name,
       email,
       password: hashPassword,
-      unity,
+      unity_id,
       position,
       permissions: userPermissions,
       active: true,
