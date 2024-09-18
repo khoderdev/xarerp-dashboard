@@ -8,48 +8,55 @@ datasource db {
 }
 
 model User {
-  id          String      @id @default(uuid())
-  name        String
-  email       String      @unique
-  password    String
-  unity_id    String
-  position    String
-  permissions String
-  active      Boolean
-  created_at  DateTime    @default(now())
-  updated_at  DateTime    @default(now())
-  unity       Store       @relation(fields: [unity_id], references: [id], onDelete: Cascade)
-  products    Product[]
-  sellers     Seller[]
-  clients     Client[]
-  tickets     Ticket[]
-  financial   Financial[]
-  purchases   Purchase[]
+  id              String      @id @default(uuid())
+  name            String
+  email           String      @unique
+  password        String
+  branch_id       String
+  position        String
+  permissions     String
+  active          Boolean
+  created_at      DateTime    @default(now())
+  updated_at      DateTime    @default(now())
+  branch          Branch      @relation(fields: [branch_id], references: [id], onDelete: Cascade)
+  orders          Order[]
+  purchases       Purchase[]
+  administratorOf Store[]     @relation(name: "StoreAdmins")
+  sellers         Seller[]
+  clients         Client[]
+  tickets         Ticket[]
 
   @@map("users")
 }
 
-enum StoreType {
-  WAREHOUSE
-  BRANCH
-}
-
 model Store {
-  id             String          @id @default(uuid())
+  id             String   @id @default(uuid())
   name           String
-  type           StoreType
-  created_at     DateTime        @default(now())
-  updated_at     DateTime        @updatedAt
-  users          User[]
-  products       Product[]
-  clients        Client[]
-  tickets        Ticket[]
-  financial      Financial[]
-  purchases      Purchase[]
-  sales          Sale[]
-  administrators Administrator[]
+  created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
+  branches       Branch[]
+  administrators User[]   @relation(name: "StoreAdmins")
+  unityPurchases  Purchase[]
+  unityClients    Client[]
+  unityTickets    Ticket[]
+  sales           Sale[]
+  Administrator   Administrator[]
 
   @@map("stores")
+}
+
+model Branch {
+  id         String          @id @default(uuid())
+  name       String
+  store_id   String
+  created_at DateTime        @default(now())
+  updated_at DateTime        @default(now())
+  store      Store           @relation(fields: [store_id], references: [id], onDelete: Cascade)
+  users      User[]
+  products   BranchProduct[]
+  orders     Order[]
+
+  @@map("branches")
 }
 
 model Category {
@@ -63,47 +70,78 @@ model Category {
 }
 
 model Product {
-  id             String     @id @default(uuid())
+  id             String          @id @default(uuid())
   name           String
   description    String
   purchase_price Int
   sale_price     Int
   category_id    String
-  unity_id       String
-  provider_id    String
-  user_id        String
-  lot            Int
-  validity       DateTime
-  quantity       Int
-  sold_amount    Int        @default(0)
-  created_at     DateTime   @default(now())
-  updated_at     DateTime   @default(now())
-  category       Category   @relation(fields: [category_id], references: [id], onDelete: Cascade)
-  unity          Store      @relation(fields: [unity_id], references: [id], onDelete: Cascade)
-  provider       Provider   @relation(fields: [provider_id], references: [id], onDelete: Cascade)
-  user           User       @relation(fields: [user_id], references: [id], onDelete: Cascade)
-  purchases      Purchase[]
+  provider_id    String? // Add the provider_id field (optional since the relation is optional)
+  created_at     DateTime        @default(now())
+  updated_at     DateTime        @default(now())
+  category       Category        @relation(fields: [category_id], references: [id], onDelete: Cascade)
+  provider       Provider?       @relation(fields: [provider_id], references: [id])
+  branchProducts BranchProduct[]
+  orderItems     OrderItem[]
+  purchase       Purchase[]
   sales          Sale[]
-
-  @@map("products")
+  sold_amount    Int
   
+  @@map("products")
+}
+
+model BranchProduct {
+  id         String   @id @default(uuid())
+  product_id String
+  branch_id  String
+  quantity   Int
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  product    Product  @relation(fields: [product_id], references: [id], onDelete: Cascade)
+  branch     Branch   @relation(fields: [branch_id], references: [id], onDelete: Cascade)
+
+  @@map("branch_products")
+}
+
+model Order {
+  id          String      @id @default(uuid())
+  user_id     String
+  branch_id   String
+  total_price Int
+  created_at  DateTime    @default(now())
+  updated_at  DateTime    @default(now())
+  user        User        @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  branch      Branch      @relation(fields: [branch_id], references: [id], onDelete: Cascade)
+  orderItems  OrderItem[]
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id         String   @id @default(uuid())
+  order_id   String
+  product_id String
+  quantity   Int
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  order      Order    @relation(fields: [order_id], references: [id], onDelete: Cascade)
+  product    Product  @relation(fields: [product_id], references: [id], onDelete: Cascade)
+
+  @@map("order_items")
 }
 
 model Purchase {
   id          String   @id @default(uuid())
   user_id     String
   unity_id    String
-  provider_id String
   product_id  String
-  quantity    Int
-  unit_price  Int
-  status      Int
+  provider_id String
   created_at  DateTime @default(now())
   updated_at  DateTime @default(now())
   user        User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
   unity       Store    @relation(fields: [unity_id], references: [id], onDelete: Cascade)
-  provider    Provider @relation(fields: [provider_id], references: [id], onDelete: Cascade)
   product     Product  @relation(fields: [product_id], references: [id], onDelete: Cascade)
+  provider    Provider @relation(fields: [provider_id], references: [id], onDelete: Cascade)
 
   @@map("purchases")
 }
@@ -111,8 +149,6 @@ model Purchase {
 model Provider {
   id         String     @id @default(uuid())
   name       String
-  email      String     @unique
-  tel        String     @unique
   created_at DateTime   @default(now())
   updated_at DateTime   @default(now())
   products   Product[]
@@ -124,7 +160,6 @@ model Provider {
 model Seller {
   id         String   @id @default(uuid())
   user_id    String
-  commission Int
   created_at DateTime @default(now())
   updated_at DateTime @default(now())
   user       User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
@@ -133,25 +168,8 @@ model Seller {
   @@map("sellers")
 }
 
-model Carrier {
-  id         String   @id @default(uuid())
-  name       String   @unique
-  region     String
-  created_at DateTime @default(now())
-  updated_at DateTime @default(now())
-  sales      Sale[]
-
-  @@map("carriers")
-}
-
 model Client {
   id         String   @id @default(uuid())
-  name       String
-  email      String   @unique
-  tel        String   @unique
-  cep        String
-  city       String
-  state      String
   user_id    String
   unity_id   String
   created_at DateTime @default(now())
@@ -164,59 +182,35 @@ model Client {
 }
 
 model Ticket {
-  id          String   @id @default(uuid())
-  title       String
-  description String
-  unity_id    String
-  user_id     String
-  status      Int
-  created_at  DateTime @default(now())
-  updated_at  DateTime @default(now())
-  unity       Store    @relation(fields: [unity_id], references: [id], onDelete: Cascade)
-  user        User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
-
-  @@map("tickets")
-}
-
-model Financial {
   id         String   @id @default(uuid())
-  type       Int
   unity_id   String
   user_id    String
-  value      Int
   created_at DateTime @default(now())
   updated_at DateTime @default(now())
   unity      Store    @relation(fields: [unity_id], references: [id], onDelete: Cascade)
   user       User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
-  @@map("financial")
+  @@map("tickets")
 }
-
 
 model Sale {
   id         String   @id @default(uuid())
   product_id String
   unity_id   String
   client_id  String
-  seller_id  String
-  carrier_id String
-  quantity   Int      @default(1)
-  status     Int
   created_at DateTime @default(now())
   updated_at DateTime @default(now())
   product    Product  @relation(fields: [product_id], references: [id], onDelete: Cascade)
   unity      Store    @relation(fields: [unity_id], references: [id], onDelete: Cascade)
   client     Client   @relation(fields: [client_id], references: [id], onDelete: Cascade)
-  seller     Seller   @relation(fields: [seller_id], references: [id], onDelete: Cascade)
-  carrier    Carrier  @relation(fields: [carrier_id], references: [id], onDelete: Cascade)
+  Seller     Seller?  @relation(fields: [sellerId], references: [id])
+  sellerId   String?
 
   @@map("sales")
 }
 
 model Administrator {
   id         String   @id @default(uuid())
-  name       String
-  email      String   @unique
   storeId    String
   created_at DateTime @default(now())
   updated_at DateTime @default(now())

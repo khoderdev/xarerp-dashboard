@@ -36,7 +36,7 @@ export const authenticate = async (req: Request, res: Response) => {
       position: hasUser.position,
       active: hasUser.active,
       permissions: hasUser.permissions,
-      unity: hasUser.unity.name
+      unity: hasUser.branch.name
     }
 
     return res.status(200).json({ token, user });

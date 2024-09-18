@@ -7,11 +7,11 @@ export const getProductsDashboardService = {
         purchase_price: true,
         sale_price: true,
         name: true,
-        sold_amount: true,
+        // sold_amount: true,
         updated_at: true
       },
       orderBy: {
-        sold_amount: 'desc'
+        // sold_amount: 'desc'
       },
       take: quantity
     });

@@ -17,9 +17,9 @@ export const createProductService = {
             id: data.category
           }
         },
-        unity: {
+        store: {
           connect: {
-            id: data.unity
+            id: data.store
           }
         },
         provider: {

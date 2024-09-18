@@ -5,7 +5,7 @@ export type Product = {
   purchase_price: number;
   sale_price: number;
   category: string;
-  unity: string;
+  store: string;
   provider: string;
   user: string;
   lot: number;

@@ -8,15 +8,14 @@
 //   name?: string;
 //   type?: string;
 // }
-import { StoreType } from "@prisma/client";
 
 export type Store = {
   id: string;
   name: string;
-  type: StoreType; // Use the StoreType enum
+  branches: string;
 };
 
 export type UpdateStore = {
   name?: string;
-  type?: StoreType; // Use the StoreType enum
+  branches?: string;
 };

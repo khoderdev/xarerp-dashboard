@@ -33,7 +33,7 @@ export const getUserService = {
         position: true,
         active: true,
         permissions: true,
-        unity: {
+        branch: {
           select: {
             name: true
           }
@@ -61,7 +61,7 @@ export const getUserService = {
           }
         },
         include: {
-          unity: {
+          branch: {
             select: {
               name: true
             }
