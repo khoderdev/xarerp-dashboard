@@ -17,7 +17,7 @@ export const getStoresDashboardService = {
         },
         unity: {
           select: {
-            type: true,
+            branches: true,
             name: true
           }
         }

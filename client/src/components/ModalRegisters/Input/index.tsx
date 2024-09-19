@@ -3,7 +3,7 @@ import * as C from './styles';
 type InputProps = {
   label: string;
   placeholder: string;
-  textarea?: boolean; // Optional prop to indicate textarea
+  textarea?: boolean; 
   [key: string]: any;
 }
 

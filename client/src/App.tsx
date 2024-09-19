@@ -25,8 +25,9 @@ import Purchases from "./pages/Purchases";
 import Financial from "./pages/Financial";
 import Users from "./pages/Users";
 import Tickets from "./pages/Tickets";
+import ErrorBoundary from "./helpers/ErrorBoundary";
 
-function App () {
+function App() {
   const auth = useContext(AuthContext);
   const { state, dispatch } = useContext(GlobalContext);
   const themeMode = state.theme.type === 'light' ? light : dark;
@@ -45,98 +46,100 @@ function App () {
   }, [dispatch]);
 
   return (
-    <ThemeProvider theme={themeMode}>
-      <GlobalStyle />
-      <C.Container>
-        {auth.user && <Menu />}
-        <C.PageBody>
-          <Header />
-          <C.Content>
-            <Routes>
+    // <ErrorBoundary>
+      <ThemeProvider theme={themeMode}>
+        <GlobalStyle />
+        <C.Container>
+          {auth.user && <Menu />}
+          <C.PageBody>
+            <Header />
+            <C.Content>
+              <Routes>
 
-              <Route path="/" element={
-                <RequireAuth role={"view_dashboard"}>
-                  <Dashboard />
-                </RequireAuth>}
-              />
+                <Route path="/" element={
+                  <RequireAuth role={"view_dashboard"}>
+                    <Dashboard />
+                  </RequireAuth>}
+                />
 
-              <Route path="/stores" element={
-                <RequireAuth role={"view_store"}>
-                  <Stores />
-                </RequireAuth>}
-              />
+                <Route path="/stores" element={
+                  <RequireAuth role={"view_store"}>
+                    <Stores />
+                  </RequireAuth>}
+                />
 
-              <Route path="/stocks" element={
-                <RequireAuth role={"view_stock"}>
-                  <h1>Estoque</h1>
-                </RequireAuth>}
-              />
+                <Route path="/stocks" element={
+                  <RequireAuth role={"view_stock"}>
+                    <h1>Estoque</h1>
+                  </RequireAuth>}
+                />
 
-              <Route path="/products" element={
-                <RequireAuth role={"view_product"}>
-                  <Products />
-                </RequireAuth>}
-              />
+                <Route path="/products" element={
+                  <RequireAuth role={"view_product"}>
+                    <Products />
+                  </RequireAuth>}
+                />
 
-              <Route path="/clients" element={
-                <RequireAuth role={"view_client"}>
-                  <Clients />
-                </RequireAuth>}
-              />
+                <Route path="/clients" element={
+                  <RequireAuth role={"view_client"}>
+                    <Clients />
+                  </RequireAuth>}
+                />
 
-              <Route path="/sales" element={
-                <RequireAuth role={"view_sale"}>
-                  <Sales />
-                </RequireAuth>}
-              />
+                <Route path="/sales" element={
+                  <RequireAuth role={"view_sale"}>
+                    <Sales />
+                  </RequireAuth>}
+                />
 
-              <Route path="/carriers" element={
-                <RequireAuth role={"view_carrier"}>
-                  <Carriers />
-                </RequireAuth>}
-              />
+                <Route path="/carriers" element={
+                  <RequireAuth role={"view_carrier"}>
+                    <Carriers />
+                  </RequireAuth>}
+                />
 
-              <Route path="/providers" element={
-                <RequireAuth role={"view_provider"}>
-                  <Providers />
-                </RequireAuth>}
-              />
+                <Route path="/providers" element={
+                  <RequireAuth role={"view_provider"}>
+                    <Providers />
+                  </RequireAuth>}
+                />
 
-              <Route path="/sellers" element={
-                <RequireAuth role={"view_seller"}>
-                  <Sellers />
-                </RequireAuth>}
-              />
+                <Route path="/sellers" element={
+                  <RequireAuth role={"view_seller"}>
+                    <Sellers />
+                  </RequireAuth>}
+                />
 
-              <Route path="/orders" element={
-                <RequireAuth role={"view_purchase"}>
-                  <Purchases />
-                </RequireAuth>}
-              />
+                <Route path="/orders" element={
+                  <RequireAuth role={"view_purchase"}>
+                    <Purchases />
+                  </RequireAuth>}
+                />
 
-              <Route path="/financial" element={
-                <RequireAuth role={"view_financial"}>
-                  <Financial />
-                </RequireAuth>}
-              />
+                <Route path="/financial" element={
+                  <RequireAuth role={"view_financial"}>
+                    <Financial />
+                  </RequireAuth>}
+                />
 
-              <Route path="/users" element={
-                <RequireAuth role={"view_user"}>
-                  <Users />
-                </RequireAuth>}
-              />
+                <Route path="/users" element={
+                  <RequireAuth role={"view_user"}>
+                    <Users />
+                  </RequireAuth>}
+                />
 
-              <Route path="/tickets" element={
-                <RequireAuth role={"view_ticket"}>
-                  <Tickets />
-                </RequireAuth>}
-              />
+                <Route path="/tickets" element={
+                  <RequireAuth role={"view_ticket"}>
+                    <Tickets />
+                  </RequireAuth>}
+                />
 
-            </Routes>
-          </C.Content>
-        </C.PageBody>
-      </C.Container>
-    </ThemeProvider>
+              </Routes>
+            </C.Content>
+          </C.PageBody>
+        </C.Container>
+      </ThemeProvider>
+    // </ErrorBoundary>
   );
 }
 

@@ -28,17 +28,19 @@ model Carrier {
   @@map("carriers")
 }
 
-enum StoreType {
-  HEADQUARTER
-  WAREHOUSE
-  FRANCHISE
-  BRANCH
+model Branches {
+  id     String  @id @default(uuid())
+  name   String  @unique
+  stores Store[] @relation("BranchStores")
+
+  @@map("branches")
 }
 
 model Store {
   id             String          @id @default(uuid())
   name           String
-  type           StoreType
+  branchId       String // Foreign key to Branches
+  branch         Branches        @relation("BranchStores", fields: [branchId], references: [id], onDelete: Cascade)
   created_at     DateTime        @default(now())
   updated_at     DateTime        @updatedAt
   users          User[]

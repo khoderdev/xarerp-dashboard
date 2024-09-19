@@ -1,15 +1,15 @@
 export type Store = {
   id: string;
   name: string;
-  type: string;
+  branch: string;
 }
 
 export type CreateStore = {
   name: string;
-  type: string;
+  branch: string;
 }
 
 export type UpdateStore = {
   name?: string;
-  type?: string;
+  branch?: string;
 }

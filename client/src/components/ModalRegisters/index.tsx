@@ -51,7 +51,7 @@ const ModalRegisters = ({
           isSending: true,
         },
       });
-      let result;
+      let result: { [x: string]: any; error: any; };
       if (type === "update") {
         result = await api.updateRegister(
           endpoint,

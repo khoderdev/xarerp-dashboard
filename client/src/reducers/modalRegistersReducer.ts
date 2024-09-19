@@ -6,6 +6,7 @@ export type ModalRegistersType = {
   editingRegister: boolean;
   registerEditingId: string;
   loadingRegister: boolean;
+  
 }
 
 export const modalRegistersInitialState: ModalRegistersType = {
