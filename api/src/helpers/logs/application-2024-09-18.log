@@ -247,3 +247,47 @@ The column `users.branch_id` does not exist in the current database.
 2024-09-18T07:19:45.350Z [info]: Server is running on port 3333
 2024-09-18T07:22:43.485Z [info]: Server is running on port 3333
 2024-09-18T07:24:20.851Z [info]: Server is running on port 3333
+2024-09-18T07:32:45.724Z [info]: GET /v1/products/?page=0&q= 304 154ms
+2024-09-18T07:32:46.307Z [info]: GET /v1/purchases/?page=0&q= 304 19ms
+2024-09-18T07:32:48.667Z [info]: POST /validate 200 4ms
+2024-09-18T07:32:48.756Z [info]: GET /v1/purchases/?page=0&q= 304 13ms
+2024-09-18T07:32:50.601Z [info]: GET /v1/stores/?page=0&q= 304 12ms
+2024-09-18T07:32:54.970Z [info]: OPTIONS /v1/store 204 2ms
+2024-09-18T07:32:55.032Z [warn]: 404 Not Found: POST /v1/store
+2024-09-18T07:32:55.035Z [info]: POST /v1/store 404 60ms
+2024-09-18T07:34:06.669Z [info]: OPTIONS /v1/stores 204 1ms
+2024-09-18T07:34:06.724Z [info]: POST /v1/stores 201 13ms
+2024-09-18T07:34:06.832Z [info]: OPTIONS /v1/stores/?page=0&q= 204 0ms
+2024-09-18T07:34:06.844Z [info]: GET /v1/stores/?page=0&q= 200 7ms
+2024-09-18T07:34:16.003Z [info]: OPTIONS /v1/stores/26ce2976-3f7a-4cf5-87e3-3d0a5458989c 204 1ms
+2024-09-18T07:34:16.024Z [info]: PUT /v1/stores/26ce2976-3f7a-4cf5-87e3-3d0a5458989c 200 12ms
+2024-09-18T07:34:16.140Z [info]: OPTIONS /v1/stores/?page=0&q= 204 1ms
+2024-09-18T07:34:16.225Z [info]: GET /v1/stores/?page=0&q= 200 6ms
+2024-09-18T07:34:44.021Z [info]: OPTIONS /v1/products/?page=0&q= 204 0ms
+2024-09-18T07:34:44.042Z [info]: GET /v1/products/?page=0&q= 200 16ms
+2024-09-18T07:34:45.952Z [info]: OPTIONS /v1/categories/?page=0&q= 204 0ms
+2024-09-18T07:34:45.964Z [info]: GET /v1/categories/?page=0&q= 200 8ms
+2024-09-18T07:34:45.972Z [info]: OPTIONS /v1/stores/?page=0&q= 204 1ms
+2024-09-18T07:34:45.983Z [info]: GET /v1/stores/?page=0&q= 200 8ms
+2024-09-18T07:34:45.990Z [info]: OPTIONS /v1/providers/?page=0&q= 204 0ms
+2024-09-18T07:34:46.004Z [info]: GET /v1/providers/?page=0&q= 200 8ms
+2024-09-18T07:34:51.458Z [info]: OPTIONS /v1/purchases/?page=0&q= 204 1ms
+2024-09-18T07:34:51.486Z [info]: GET /v1/purchases/?page=0&q= 200 17ms
+2024-09-18T07:34:51.850Z [info]: OPTIONS /v1/users/?page=0&q= 204 1ms
+2024-09-18T07:34:51.895Z [info]: GET /v1/users/?page=0&q= 200 11ms
+2024-09-18T07:35:03.983Z [info]: OPTIONS /v1/stores/?page=0&q= 204 2ms
+2024-09-18T07:35:03.999Z [info]: GET /v1/stores/?page=0&q= 200 13ms
+2024-09-18T07:35:04.599Z [info]: OPTIONS /v1/dashboard/7 204 1ms
+2024-09-18T07:35:04.634Z [info]: GET /v1/dashboard/7 200 30ms
+2024-09-18T07:35:05.229Z [info]: OPTIONS /v1/stores/?page=0&q= 204 1ms
+2024-09-18T07:35:05.242Z [info]: GET /v1/stores/?page=0&q= 200 8ms
+2024-09-18T07:35:05.885Z [info]: OPTIONS /v1/purchases/?page=0&q= 204 0ms
+2024-09-18T07:35:05.924Z [info]: GET /v1/purchases/?page=0&q= 200 17ms
+2024-09-18T07:35:06.439Z [info]: OPTIONS /v1/users/?page=0&q= 204 1ms
+2024-09-18T07:35:06.457Z [info]: GET /v1/users/?page=0&q= 200 9ms
+2024-09-18T07:35:07.271Z [info]: OPTIONS /v1/products/?page=0&q= 204 1ms
+2024-09-18T07:35:07.347Z [info]: GET /v1/products/?page=0&q= 200 23ms
+2024-09-18T07:35:07.589Z [info]: OPTIONS /v1/dashboard/7 204 0ms
+2024-09-18T07:35:07.621Z [info]: GET /v1/dashboard/7 200 15ms
+2024-09-18T07:35:09.406Z [info]: OPTIONS /v1/users/?page=0&q= 204 1ms
+2024-09-18T07:35:09.420Z [info]: GET /v1/users/?page=0&q= 200 11ms
