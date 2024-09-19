@@ -11,6 +11,7 @@ import Select from '../../components/ModalRegisters/Select';
 
 import { CreateProduct } from '../../types/Product';
 import { TableRegisters } from '../../types/TableRegisters';
+import { AuthContext } from '../../contexts/auth/AuthContext';
 
 type Options = {
   name: string;
@@ -19,6 +20,7 @@ type Options = {
 
 const Products = () => {
   const api = useApi();
+  const auth = useContext(AuthContext);
   const { state, dispatch } = useContext(GlobalContext);
 
   const [categories, setCategories] = useState<Options[]>([]);
@@ -41,6 +43,11 @@ const Products = () => {
   const [hasError, setHasError] = useState(false);
   const [error, setError] = useState('');
 
+  const canViewProductsRoles = ['Administration', 'Deposit'];
+  const canAddProductsRoles = ['Administration'];
+  const canEditProductsRoles = ['Administration'];
+  const canDeleteProductsRoles = ['Administration'];
+
   const dataProps: CreateProduct = {
     name,
     description,
@@ -55,8 +62,8 @@ const Products = () => {
   }
 
   const dataTable: TableRegisters = {
-    endpoint: "products",
-    key: "products",
+    endpoint: 'products',
+    key: 'products',
     roles: ['create_product', 'update_product', 'delete_product'],
     tableHeads: [
       {
@@ -83,18 +90,13 @@ const Products = () => {
     tableTitle: 'Products'
   }
 
-  const handleNewCategory = async (e: any) => {
+  const handleNewCategory = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const result = await api.createRegister('categories', { title: nameNewCategory });
 
     if (result.category) {
-      setCategories(oldArray => [...oldArray,
-      {
-        name: result.category.title,
-        value: result.category.id
-      }
-      ]);
+      setCategories(oldArray => [...oldArray, { name: result.category.title, value: result.category.id }]);
       setCategory(result.category.id);
       setIsNewCategory(!isNewCategory);
       setHasError(false);
@@ -122,69 +124,49 @@ const Products = () => {
     setStores([]);
     setProviders([]);
 
-    const resultCategories = await api.getRegisters('categories', Number(0));
-    const resultStores = await api.getRegisters('stores', Number(0));
-    const resultProviders = await api.getRegisters('providers', Number(0));
+    const resultCategories = await api.getRegisters('categories', 0);
+    const resultStores = await api.getRegisters('stores', 0);
+    const resultProviders = await api.getRegisters('providers', 0);
 
     if (resultCategories.categories) {
-      resultCategories.categories.map((item: { title: string; id: string; }, index: any) => (
-        setCategories(oldArray => [...oldArray,
-        {
-          name: item.title,
-          value: item.id
-        }
-        ])
-      ));
+      setCategories(resultCategories.categories.map(item => ({
+        name: item.title,
+        value: item.id
+      })));
     }
 
     if (resultStores.stores) {
-      resultStores.stores[1].map((item: { name: string; id: string; }, index: any) => (
-        setStores(oldArray => [...oldArray,
-        {
-          name: item.name,
-          value: item.id
-        }
-        ])
-      ));
+      setStores(resultStores.stores.map(item => ({
+        name: item.name,
+        value: item.id
+      })));
     }
 
     if (resultProviders.providers) {
-      resultProviders.providers[1].map((item: { name: string; id: string; }, index: any) => (
-        setProviders(oldArray => [...oldArray,
-        {
-          name: item.name,
-          value: item.id
-        }
-        ])
-      ));
+      setProviders(resultProviders.providers.map(item => ({
+        name: item.name,
+        value: item.id
+      })));
     }
 
     dispatch({
       type: 'MODALREGISTERS_SET_LOADINGREGISTER',
-      payload: {
-        loadingRegister: false
-      }
-    })
+      payload: { loadingRegister: false }
+    });
     dispatch({
       type: 'MODALREGISTERS_SET_OPENEDMODAL',
-      payload: {
-        openedModal: true
-      }
+      payload: { openedModal: true }
     });
   }
 
   useEffect(() => {
     dispatch({
       type: 'REGISTER_CHANGE_HASERROR',
-      payload: {
-        hasError: false
-      }
+      payload: { hasError: false }
     });
     dispatch({
       type: 'REGISTER_CHANGE_PROPS',
-      payload: {
-        props: { ...dataProps }
-      }
+      payload: { props: { ...dataProps } }
     });
 
     if (
@@ -201,22 +183,16 @@ const Products = () => {
     ) {
       dispatch({
         type: 'REGISTER_CHANGE_ISREADY',
-        payload: {
-          isReady: true
-        }
+        payload: { isReady: true }
       });
     } else {
       dispatch({
         type: 'REGISTER_CHANGE_ISREADY',
-        payload: {
-          isReady: false
-        }
+        payload: { isReady: false }
       });
       dispatch({
         type: 'REGISTER_CHANGE_ERROR',
-        payload: {
-          error: 'You must fill all fields above'
-        }
+        payload: { error: 'You must fill all fields above' }
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -229,41 +205,29 @@ const Products = () => {
         setStores([]);
         setProviders([]);
 
-        const resultCategories = await api.getRegisters('categories', Number(0));
-        const resultStores = await api.getRegisters('stores', Number(0));
-        const resultProviders = await api.getRegisters('providers', Number(0));
+        const resultCategories = await api.getRegisters('categories', 0);
+        const resultStores = await api.getRegisters('stores', 0);
+        const resultProviders = await api.getRegisters('providers', 0);
 
         if (resultCategories.categories) {
-          resultCategories.categories.map((item: { title: string; id: string; }, index: any) => (
-            setCategories(oldArray => [...oldArray,
-            {
-              name: item.title,
-              value: item.id
-            }
-            ])
-          ));
+          setCategories(resultCategories.categories.map(item => ({
+            name: item.title,
+            value: item.id
+          })));
         }
 
         if (resultStores.stores) {
-          resultStores.stores[1].map((item: { name: string; id: string; }, index: any) => (
-            setStores(oldArray => [...oldArray,
-            {
-              name: item.name,
-              value: item.id
-            }
-            ])
-          ));
+          setStores(resultStores.stores.map(item => ({
+            name: item.name,
+            value: item.id
+          })));
         }
 
         if (resultProviders.providers) {
-          resultProviders.providers[1].map((item: { name: string; id: string; }, index: any) => (
-            setProviders(oldArray => [...oldArray,
-            {
-              name: item.name,
-              value: item.id
-            }
-            ])
-          ));
+          setProviders(resultProviders.providers.map(item => ({
+            name: item.name,
+            value: item.id
+          })));
         }
       })();
 
@@ -285,142 +249,141 @@ const Products = () => {
     <>
       <CommonSections data={dataTable} handleNew={handleNewProduct} />
 
-      {state.modalRegisters.openedModal && (
-        <ModalRegisters
-          endpoint="products"
-          type={state.modalRegisters.editingRegister
-            ? 'update'
-            : state.modalRegisters.deletingRegister
-              ? 'delete'
-              : 'create'}
-          dataKey="product"
-          title={
-            state.modalRegisters.editingRegister
-              ? 'Edit Product'
-              : state.modalRegisters.deletingRegister
-                ? 'Delete Product'
-                : 'Add New Product'
-          }
-        >
-          {state.modalRegisters.deletingRegister ? (
-            <p>This process is irreversible and will also delete other data related to this record. Do you wish to continue?</p>
-          ) : (
+      {canViewProductsRoles.includes(auth.user?.position ?? '') && (
+        <>
+          {state.modalRegisters.openedModal && (
             <>
-              <Input
-                label="Name"
-                placeholder={
-                  state.modalRegisters.editingRegister
-                    ? 'Edit Product Name'
-                    : 'Product Name'
-                }
-                value={name}
-                onChange={(e: any) => setName(e.target.value)}
-              />
+              {canAddProductsRoles.includes(auth.user?.position ?? '') && (
+                <ModalRegisters
+                  endpoint="products"
+                  type={state.modalRegisters.editingRegister
+                    ? 'update'
+                    : state.modalRegisters.deletingRegister
+                      ? 'delete'
+                      : 'create'}
+                  dataKey="product"
+                  title={state.modalRegisters.editingRegister
+                    ? 'Edit Product'
+                    : state.modalRegisters.deletingRegister
+                      ? 'Delete Product'
+                      : 'Add New Product'}
+                >
+                  {state.modalRegisters.deletingRegister ? (
+                    <p>This process is irreversible and will also delete other data related to this record. Do you wish to continue?</p>
+                  ) : (
+                    <>
+                      <Input
+                        label="Name"
+                        placeholder={state.modalRegisters.editingRegister
+                          ? 'Edit Product Name'
+                          : 'Product Name'}
+                        value={name}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)} disabled={false} />
 
-              <Input
-                label="Description"
-                placeholder={
-                  state.modalRegisters.editingRegister
-                    ? 'Edit Product Description'
-                    : 'Product Description'
-                }
-                textarea={true} // Use textarea
-                rows={2}
-                value={description}
-                onChange={(e: any) => setDescription(e.target.value)}
-              />
+                      <Input
+                        label="Description"
+                        placeholder={state.modalRegisters.editingRegister
+                          ? 'Edit Product Description'
+                          : 'Product Description'}
+                        textarea={true} // Use textarea
+                        rows={2}
+                        value={description}
+                        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setDescription(e.target.value)} disabled={false} />
 
-              <Select
-                label="Category"
-                dataOptions={categories}
-                value={category}
-                onChange={(e: any) => setCategory(e.target.value)}
-              />
+                      <Select
+                        label="Category"
+                        dataOptions={categories}
+                        value={category}
+                        onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setCategory(e.target.value)}
+                      />
 
-              <C.ButtonNewCategory
-                onClick={(e: any) => {
-                  e.preventDefault();
-                  setIsNewCategory(!isNewCategory);
-                }}
-              >
-                New Category
-              </C.ButtonNewCategory>
+                      <C.ButtonNewCategory
+                        onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                          e.preventDefault();
+                          setIsNewCategory(!isNewCategory);
+                        }}
+                      >
+                        Add New Category
+                      </C.ButtonNewCategory>
 
-              {isNewCategory && (
-                <C.NewCategoryArea>
-                  <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-                    <Input
-                      label="Category Name"
-                      placeholder="Drinks, Food.."
-                      value={nameNewCategory}
-                      onChange={(e: any) => setNameNewCategory(e.target.value)}
-                    />
-                    <C.ButtonAddNewCategory onClick={handleNewCategory}>
-                      +
-                    </C.ButtonAddNewCategory>
-                  </div>
-                  {hasError && <p>{error}</p>}
-                </C.NewCategoryArea>
+                      {isNewCategory && (
+                        <form onSubmit={handleNewCategory}>
+                          <Input
+                            label="New Category Name"
+                            value={nameNewCategory}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNameNewCategory(e.target.value)} placeholder={''} disabled={false} />
+                          <C.ButtonAddNewCategory type="submit">Add Category</C.ButtonAddNewCategory>
+                        </form>
+                      )}
+
+                      <Input
+                        label="Purchase Price"
+                        type="number"
+                        placeholder={state.modalRegisters.editingRegister
+                          ? 'Edit Purchase Price'
+                          : 'Purchase Price'}
+                        value={purchase_price}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPurchase_price(Number(e.target.value))} disabled={false} />
+
+                      <Input
+                        label="Sale Price"
+                        type="number"
+                        placeholder={state.modalRegisters.editingRegister
+                          ? 'Edit Sale Price'
+                          : 'Sale Price'}
+                        value={sale_price}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSale_price(Number(e.target.value))} disabled={false} />
+
+                      <Select
+                        label="Store"
+                        dataOptions={stores}
+                        value={unity}
+                        onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setUnity(e.target.value)}
+                      />
+
+                      <Select
+                        label="Provider"
+                        dataOptions={providers}
+                        value={provider}
+                        onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setProvider(e.target.value)}
+                      />
+
+                      <Input
+                        label="Lot"
+                        type="number"
+                        placeholder={state.modalRegisters.editingRegister
+                          ? 'Edit Lot Number'
+                          : 'Lot Number'}
+                        value={lot}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLot(Number(e.target.value))} disabled={false} />
+
+                      <Input
+                        label="Validity"
+                        placeholder={state.modalRegisters.editingRegister
+                          ? 'Edit Validity Date'
+                          : 'Validity Date'}
+                        type="date"
+                        value={validity}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValidity(e.target.value)} disabled={false} />
+
+                      <Input
+                        label="Quantity"
+                        type="number"
+                        placeholder={state.modalRegisters.editingRegister
+                          ? 'Edit Quantity'
+                          : 'Quantity'}
+                        value={quantity}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuantity(Number(e.target.value))} disabled={false} />
+                    </>
+                  )}
+                </ModalRegisters>
               )}
-
-              <Select
-                label="Unit"
-                dataOptions={stores}
-                value={unity}
-                onChange={(e: any) => setUnity(e.target.value)}
-              />
-
-              <Input
-                label="Purchase Price"
-                placeholder="10"
-                value={purchase_price > 0 ? purchase_price : ""}
-                onChange={(e: any) =>
-                  setPurchase_price(parseFloat(e.target.value))
-                }
-              />
-
-              <Input
-                label="Selling Price"
-                placeholder="15"
-                value={sale_price > 0 ? sale_price : ""}
-                onChange={(e: any) => setSale_price(parseFloat(e.target.value))}
-              />
-
-              <Select
-                label="Supplier"
-                dataOptions={providers}
-                value={provider}
-                onChange={(e: any) => setProvider(e.target.value)}
-              />
-
-              <Input
-                label="Batch Number"
-                placeholder="123456"
-                value={lot > 0 ? lot : ''}
-                onChange={(e: any) => setLot(parseInt(e.target.value))}
-              />
-
-              <Input
-                label="Expiry Date"
-                placeholder="2022-05-10"
-                type="date"
-                value={validity}
-                onChange={(e: any) => setValidity(e.target.value)}
-              />
-
-              <Input
-                label="Quantity"
-                placeholder="5"
-                value={quantity > 0 ? quantity : ''}
-                onChange={(e: any) => setQuantity(parseInt(e.target.value))}
-              />
             </>
           )}
-        </ModalRegisters>
+        </>
       )}
     </>
   );
-
 }
 
 export default Products;

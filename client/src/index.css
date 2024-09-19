@@ -1,19 +1,24 @@
 /* ANIMATIONS */
 
 .onEnterModal {
-  animation: onEnterModalAnimation .3s;
+  animation: onEnterModalAnimation 0.3s;
 }
 
 @keyframes onEnterModalAnimation {
   from {
-    margin-top: -200px
+    margin-top: -200px;
   }
 
   to {
-    margin-top: 0px
+    margin-top: 0px;
   }
 }
 
 .recharts-wrapper {
   width: 0 !important;
+}
+
+.buttons-modal {
+  display: flex;
+  justify-content: center;
 }

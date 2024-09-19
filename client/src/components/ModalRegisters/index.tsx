@@ -171,32 +171,33 @@ const ModalRegisters = ({
             <span>{state.register.error}</span>
           </Error>
         )}
-
-        <C.ButtonArea>
-          {!state.modalRegisters.loadingRegister && (
-            <C.Button
-              className={`${state.modalRegisters.deletingRegister
+        <div className="buttons-modal">
+          <C.ButtonArea>
+            {!state.modalRegisters.loadingRegister && (
+              <C.Button
+                className={`${state.modalRegisters.deletingRegister
                   ? "buttonDelete"
                   : "buttonSave"
-                }`}
+                  }`}
+                disabled={state.register.isSending}
+                onClick={
+                  state.modalRegisters.deletingRegister
+                    ? handleDelete
+                    : handleSubmit
+                }
+              >
+                {state.modalRegisters.deletingRegister ? "Delete" : "Save"}
+              </C.Button>
+            )}
+            <C.Button
+              className="buttonCancel"
               disabled={state.register.isSending}
-              onClick={
-                state.modalRegisters.deletingRegister
-                  ? handleDelete
-                  : handleSubmit
-              }
+              onClick={handleCancel}
             >
-              {state.modalRegisters.deletingRegister ? "Delete" : "Save"}
+              Cancel
             </C.Button>
-          )}
-          <C.Button
-            className="buttonCancel"
-            disabled={state.register.isSending}
-            onClick={handleCancel}
-          >
-            Cancel
-          </C.Button>
-        </C.ButtonArea>
+          </C.ButtonArea>
+        </div>
       </C.ModalContent>
     </C.ModalContainer>
   );
