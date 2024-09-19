@@ -1845,3 +1845,274 @@ Argument `skip` is missing.
 2024-09-19T11:42:20.045Z [info]: Server is running on port 3333
 2024-09-19T11:42:33.817Z [info]: Server is running on port 3333
 2024-09-19T11:42:52.978Z [info]: Server is running on port 3333
+2024-09-19T11:43:00.800Z [info]: Server is running on port 3333
+2024-09-19T11:43:10.136Z [error]: Error in listAll: 
+Invalid `prisma.store.count()` invocation in
+C:\Users\Admin\Desktop\xarerp-dashboard\api\src\modules\stores\services\getStoreService.ts:344:22
+
+  341 listAll: async (name: string, page: number) => {
+  342   try {
+  343     return await prisma.$transaction([
+→ 344       prisma.store.count({
+              select: {
+                _count: {
+                  select: {
+                    _all: true
+                  }
+                }
+              },
+              where: {
+                name: {
+                  contains: "undefined",
+                  mode: "insensitive"
+                }
+              },
+            + skip: Int
+            })
+
+Argument `skip` is missing., Stack: PrismaClientValidationError: 
+Invalid `prisma.store.count()` invocation in
+C:\Users\Admin\Desktop\xarerp-dashboard\api\src\modules\stores\services\getStoreService.ts:344:22
+
+  341 listAll: async (name: string, page: number) => {
+  342   try {
+  343     return await prisma.$transaction([
+→ 344       prisma.store.count({
+              select: {
+                _count: {
+                  select: {
+                    _all: true
+                  }
+                }
+              },
+              where: {
+                name: {
+                  contains: "undefined",
+                  mode: "insensitive"
+                }
+              },
+            + skip: Int
+            })
+
+Argument `skip` is missing.
+    at In (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\@prisma\client\runtime\library.js:114:7526)
+    at Ln.handleRequestError (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\@prisma\client\runtime\library.js:121:7396)
+    at Ln.handleAndLogRequestError (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\@prisma\client\runtime\library.js:121:7061)
+    at Ln.request (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\@prisma\client\runtime\library.js:121:6745)
+    at l (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\@prisma\client\runtime\library.js:130:9633)
+2024-09-19T11:43:10.142Z [error]: Error in getAll: 
+Invalid `prisma.store.count()` invocation in
+C:\Users\Admin\Desktop\xarerp-dashboard\api\src\modules\stores\services\getStoreService.ts:344:22
+
+  341 listAll: async (name: string, page: number) => {
+  342   try {
+  343     return await prisma.$transaction([
+→ 344       prisma.store.count({
+              select: {
+                _count: {
+                  select: {
+                    _all: true
+                  }
+                }
+              },
+              where: {
+                name: {
+                  contains: "undefined",
+                  mode: "insensitive"
+                }
+              },
+            + skip: Int
+            })
+
+Argument `skip` is missing., Stack: PrismaClientValidationError: 
+Invalid `prisma.store.count()` invocation in
+C:\Users\Admin\Desktop\xarerp-dashboard\api\src\modules\stores\services\getStoreService.ts:344:22
+
+  341 listAll: async (name: string, page: number) => {
+  342   try {
+  343     return await prisma.$transaction([
+→ 344       prisma.store.count({
+              select: {
+                _count: {
+                  select: {
+                    _all: true
+                  }
+                }
+              },
+              where: {
+                name: {
+                  contains: "undefined",
+                  mode: "insensitive"
+                }
+              },
+            + skip: Int
+            })
+
+Argument `skip` is missing.
+    at In (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\@prisma\client\runtime\library.js:114:7526)
+    at Ln.handleRequestError (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\@prisma\client\runtime\library.js:121:7396)
+    at Ln.handleAndLogRequestError (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\@prisma\client\runtime\library.js:121:7061)
+    at Ln.request (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\@prisma\client\runtime\library.js:121:6745)
+    at l (C:\Users\Admin\Desktop\xarerp-dashboard\api\node_modules\@prisma\client\runtime\library.js:130:9633)
+2024-09-19T11:43:10.161Z [info]: GET /v1/stores/ 500 142ms
+2024-09-19T11:43:20.907Z [info]: GET /v1/stores/?page=0&q= 200 16ms
+2024-09-19T11:43:31.896Z [info]: OPTIONS /validate 204 2ms
+2024-09-19T11:43:31.907Z [info]: POST /validate 200 6ms
+2024-09-19T11:43:31.995Z [info]: OPTIONS /v1/dashboard/7 204 1ms
+2024-09-19T11:43:32.140Z [info]: GET /v1/dashboard/7 500 114ms
+2024-09-19T11:43:36.073Z [info]: OPTIONS /v1/stores/?page=0&q= 204 1ms
+2024-09-19T11:43:36.089Z [info]: GET /v1/stores/?page=0&q= 200 10ms
+2024-09-19T11:43:38.091Z [info]: OPTIONS /validate 204 1ms
+2024-09-19T11:43:38.098Z [info]: POST /validate 200 4ms
+2024-09-19T11:43:38.194Z [info]: OPTIONS /v1/stores/?page=0&q= 204 2ms
+2024-09-19T11:43:38.220Z [info]: GET /v1/stores/?page=0&q= 200 10ms
+2024-09-19T11:43:41.956Z [info]: OPTIONS /validate 204 1ms
+2024-09-19T11:43:41.962Z [info]: POST /validate 200 3ms
+2024-09-19T11:43:42.044Z [info]: OPTIONS /v1/dashboard/7 204 1ms
+2024-09-19T11:43:42.114Z [info]: GET /v1/dashboard/7 500 23ms
+2024-09-19T11:48:14.761Z [info]: OPTIONS /validate 204 0ms
+2024-09-19T11:48:14.771Z [info]: POST /validate 200 8ms
+2024-09-19T11:48:14.879Z [info]: OPTIONS /v1/dashboard/7 204 0ms
+2024-09-19T11:48:14.938Z [info]: GET /v1/dashboard/7 500 44ms
+2024-09-19T11:48:17.104Z [info]: OPTIONS /v1/stores/?page=0&q= 204 0ms
+2024-09-19T11:48:17.121Z [info]: GET /v1/stores/?page=0&q= 200 9ms
+2024-09-19T11:48:20.887Z [info]: OPTIONS /validate 204 0ms
+2024-09-19T11:48:20.892Z [info]: POST /validate 200 2ms
+2024-09-19T11:48:21.014Z [info]: OPTIONS /v1/stores/?page=0&q= 204 1ms
+2024-09-19T11:48:21.065Z [info]: GET /v1/stores/?page=0&q= 200 9ms
+2024-09-19T11:49:47.510Z [info]: OPTIONS /validate 204 1ms
+2024-09-19T11:49:47.523Z [info]: POST /validate 200 8ms
+2024-09-19T11:49:47.681Z [info]: OPTIONS /v1/stores/?page=0&q= 204 0ms
+2024-09-19T11:49:47.859Z [info]: GET /v1/stores/?page=0&q= 200 13ms
+2024-09-19T11:52:05.238Z [info]: OPTIONS /validate 204 0ms
+2024-09-19T11:52:05.244Z [info]: POST /validate 200 4ms
+2024-09-19T11:52:05.280Z [info]: OPTIONS /v1/stores/?page=0&q= 204 1ms
+2024-09-19T11:52:05.290Z [info]: GET /v1/stores/?page=0&q= 200 6ms
+2024-09-19T11:53:11.628Z [info]: OPTIONS /validate 204 1ms
+2024-09-19T11:53:11.644Z [info]: POST /validate 200 4ms
+2024-09-19T11:53:11.689Z [info]: OPTIONS /v1/stores/?page=0&q= 204 1ms
+2024-09-19T11:53:11.774Z [info]: GET /v1/stores/?page=0&q= 200 10ms
+2024-09-19T11:53:16.466Z [info]: OPTIONS /validate 204 1ms
+2024-09-19T11:53:16.472Z [info]: POST /validate 200 3ms
+2024-09-19T11:53:16.663Z [info]: OPTIONS /v1/stores/?page=0&q= 204 0ms
+2024-09-19T11:53:16.724Z [info]: GET /v1/stores/?page=0&q= 200 6ms
+2024-09-19T11:53:22.362Z [info]: OPTIONS /validate 204 1ms
+2024-09-19T11:53:22.368Z [info]: POST /validate 200 4ms
+2024-09-19T11:53:22.615Z [info]: OPTIONS /v1/stores/?page=0&q= 204 0ms
+2024-09-19T11:53:22.823Z [info]: GET /v1/stores/?page=0&q= 200 9ms
+2024-09-19T11:53:34.769Z [info]: OPTIONS /validate 204 1ms
+2024-09-19T11:53:34.902Z [info]: POST /validate 200 6ms
+2024-09-19T11:53:34.960Z [info]: OPTIONS /v1/stores/?page=0&q= 204 1ms
+2024-09-19T11:53:35.120Z [info]: GET /v1/stores/?page=0&q= 200 10ms
+2024-09-19T11:53:37.729Z [info]: OPTIONS /validate 204 0ms
+2024-09-19T11:53:37.747Z [info]: POST /validate 200 9ms
+2024-09-19T11:53:37.974Z [info]: OPTIONS /v1/stores/?page=0&q= 204 1ms
+2024-09-19T11:53:38.164Z [info]: GET /v1/stores/?page=0&q= 200 21ms
+2024-09-19T11:53:51.927Z [info]: OPTIONS /login 204 0ms
+2024-09-19T11:53:52.025Z [info]: POST /login 200 94ms
+2024-09-19T11:53:52.110Z [info]: OPTIONS /v1/stores/?page=0&q= 204 0ms
+2024-09-19T11:53:52.129Z [info]: GET /v1/stores/?page=0&q= 200 8ms
+2024-09-19T11:53:52.692Z [info]: OPTIONS /validate 204 0ms
+2024-09-19T11:53:52.697Z [info]: POST /validate 200 3ms
+2024-09-19T11:53:52.842Z [info]: OPTIONS /v1/dashboard/7 204 0ms
+2024-09-19T11:53:52.876Z [info]: GET /v1/dashboard/7 500 29ms
+2024-09-19T11:53:56.140Z [info]: OPTIONS /v1/stores/?page=0&q= 204 0ms
+2024-09-19T11:53:56.155Z [info]: GET /v1/stores/?page=0&q= 200 10ms
+2024-09-19T11:54:10.945Z [info]: OPTIONS /validate 204 0ms
+2024-09-19T11:54:10.952Z [info]: POST /validate 200 5ms
+2024-09-19T11:54:11.078Z [info]: OPTIONS /v1/stores/?page=0&q= 204 0ms
+2024-09-19T11:54:11.219Z [info]: GET /v1/stores/?page=0&q= 200 8ms
+2024-09-19T11:54:17.590Z [info]: OPTIONS /validate 204 0ms
+2024-09-19T11:54:17.595Z [info]: POST /validate 200 2ms
+2024-09-19T11:54:17.709Z [info]: OPTIONS /v1/stores/?page=0&q= 204 1ms
+2024-09-19T11:54:17.729Z [info]: GET /v1/stores/?page=0&q= 200 7ms
+2024-09-19T11:58:23.186Z [info]: OPTIONS /validate 204 1ms
+2024-09-19T11:58:23.192Z [info]: POST /validate 200 4ms
+2024-09-19T11:58:23.458Z [info]: OPTIONS /v1/stores/?page=0&q= 204 1ms
+2024-09-19T11:58:23.468Z [info]: GET /v1/stores/?page=0&q= 200 7ms
+2024-09-19T12:15:00.414Z [info]: OPTIONS /validate 204 0ms
+2024-09-19T12:15:00.581Z [info]: POST /validate 200 165ms
+2024-09-19T12:15:00.654Z [info]: OPTIONS /v1/stores/?page=0&q= 204 1ms
+2024-09-19T12:15:00.714Z [info]: GET /v1/stores/?page=0&q= 200 17ms
+2024-09-19T12:15:48.906Z [info]: OPTIONS /validate 204 1ms
+2024-09-19T12:15:48.916Z [info]: POST /validate 200 5ms
+2024-09-19T12:15:48.979Z [info]: OPTIONS /v1/stores/?page=0&q= 204 1ms
+2024-09-19T12:15:49.027Z [info]: GET /v1/stores/?page=0&q= 200 25ms
+2024-09-19T12:16:04.950Z [info]: OPTIONS /validate 204 1ms
+2024-09-19T12:16:04.956Z [info]: POST /validate 200 4ms
+2024-09-19T12:16:05.066Z [info]: OPTIONS /v1/stores/?page=0&q= 204 0ms
+2024-09-19T12:16:05.170Z [info]: GET /v1/stores/?page=0&q= 200 7ms
+2024-09-19T12:16:08.799Z [info]: OPTIONS /validate 204 0ms
+2024-09-19T12:16:08.804Z [info]: POST /validate 200 2ms
+2024-09-19T12:16:08.917Z [info]: OPTIONS /v1/stores/?page=0&q= 204 0ms
+2024-09-19T12:16:08.984Z [info]: GET /v1/stores/?page=0&q= 200 7ms
+2024-09-19T12:16:18.920Z [info]: OPTIONS /validate 204 1ms
+2024-09-19T12:16:18.929Z [info]: POST /validate 200 3ms
+2024-09-19T12:16:18.978Z [info]: OPTIONS /v1/stores/?page=0&q= 204 1ms
+2024-09-19T12:16:19.020Z [info]: GET /v1/stores/?page=0&q= 200 7ms
+2024-09-19T12:17:38.036Z [info]: OPTIONS /validate 204 0ms
+2024-09-19T12:17:38.047Z [info]: POST /validate 200 4ms
+2024-09-19T12:17:38.152Z [info]: OPTIONS /v1/stores/?page=0&q= 204 0ms
+2024-09-19T12:17:38.189Z [info]: GET /v1/stores/?page=0&q= 200 8ms
+2024-09-19T12:18:01.580Z [info]: OPTIONS /validate 204 1ms
+2024-09-19T12:18:01.586Z [info]: POST /validate 200 4ms
+2024-09-19T12:18:01.689Z [info]: OPTIONS /v1/stores/?page=0&q= 204 0ms
+2024-09-19T12:18:01.911Z [info]: GET /v1/stores/?page=0&q= 200 9ms
+2024-09-19T12:18:24.610Z [info]: OPTIONS /validate 204 1ms
+2024-09-19T12:18:24.615Z [info]: POST /validate 200 3ms
+2024-09-19T12:18:24.703Z [info]: OPTIONS /v1/stores/?page=0&q= 204 0ms
+2024-09-19T12:18:24.753Z [info]: GET /v1/stores/?page=0&q= 200 7ms
+2024-09-19T12:18:29.217Z [info]: OPTIONS /validate 204 0ms
+2024-09-19T12:18:29.225Z [info]: POST /validate 200 5ms
+2024-09-19T12:18:29.326Z [info]: OPTIONS /v1/stores/?page=0&q= 204 1ms
+2024-09-19T12:18:29.343Z [info]: GET /v1/stores/?page=0&q= 200 8ms
+2024-09-19T12:18:34.804Z [info]: OPTIONS /validate 204 0ms
+2024-09-19T12:18:34.810Z [info]: POST /validate 200 3ms
+2024-09-19T12:18:34.934Z [info]: OPTIONS /v1/stores/?page=0&q= 204 0ms
+2024-09-19T12:18:34.959Z [info]: GET /v1/stores/?page=0&q= 200 7ms
+2024-09-19T12:18:38.509Z [info]: OPTIONS /v1/products/?page=0&q= 204 1ms
+2024-09-19T12:18:38.568Z [info]: GET /v1/products/?page=0&q= 200 56ms
+2024-09-19T12:18:39.493Z [info]: OPTIONS /v1/categories/?page=0&q= 204 0ms
+2024-09-19T12:18:39.501Z [info]: GET /v1/categories/?page=0&q= 200 4ms
+2024-09-19T12:18:39.507Z [info]: OPTIONS /v1/stores/?page=0&q= 204 0ms
+2024-09-19T12:18:39.516Z [info]: GET /v1/stores/?page=0&q= 200 5ms
+2024-09-19T12:18:39.523Z [info]: OPTIONS /v1/providers/?page=0&q= 204 1ms
+2024-09-19T12:18:39.533Z [info]: GET /v1/providers/?page=0&q= 200 7ms
+2024-09-19T12:18:41.909Z [info]: OPTIONS /v1/categories/?page=0&q= 204 0ms
+2024-09-19T12:18:41.918Z [info]: GET /v1/categories/?page=0&q= 200 5ms
+2024-09-19T12:18:41.954Z [info]: OPTIONS /v1/stores/?page=0&q= 204 0ms
+2024-09-19T12:18:41.982Z [info]: GET /v1/stores/?page=0&q= 200 6ms
+2024-09-19T12:18:41.995Z [info]: OPTIONS /v1/providers/?page=0&q= 204 1ms
+2024-09-19T12:18:42.006Z [info]: GET /v1/providers/?page=0&q= 200 6ms
+2024-09-19T12:19:12.724Z [info]: OPTIONS /v1/stores/?page=0&q= 204 0ms
+2024-09-19T12:19:12.737Z [info]: GET /v1/stores/?page=0&q= 200 7ms
+2024-09-19T12:19:23.857Z [info]: OPTIONS /validate 204 0ms
+2024-09-19T12:19:23.863Z [info]: POST /validate 200 3ms
+2024-09-19T12:19:23.964Z [info]: OPTIONS /v1/stores/?page=0&q= 204 0ms
+2024-09-19T12:19:24.029Z [info]: GET /v1/stores/?page=0&q= 200 29ms
+2024-09-19T12:19:26.295Z [info]: OPTIONS /v1/purchases/?page=0&q= 204 0ms
+2024-09-19T12:19:26.313Z [info]: GET /v1/purchases/?page=0&q= 200 14ms
+2024-09-19T12:19:28.910Z [info]: OPTIONS /v1/stores/?page=0&q= 204 1ms
+2024-09-19T12:19:28.917Z [info]: GET /v1/stores/?page=0&q= 200 4ms
+2024-09-19T12:19:28.924Z [info]: OPTIONS /v1/providers/?page=0&q= 204 0ms
+2024-09-19T12:19:28.931Z [info]: GET /v1/providers/?page=0&q= 200 4ms
+2024-09-19T12:19:28.937Z [info]: OPTIONS /v1/products/?page=0&q= 204 0ms
+2024-09-19T12:19:28.947Z [info]: GET /v1/products/?page=0&q= 200 7ms
+2024-09-19T12:20:05.510Z [info]: OPTIONS /v1/stores/?page=0&q= 204 0ms
+2024-09-19T12:20:05.527Z [info]: GET /v1/stores/?page=0&q= 200 11ms
+2024-09-19T12:20:09.310Z [info]: OPTIONS /validate 204 1ms
+2024-09-19T12:20:09.316Z [info]: POST /validate 200 3ms
+2024-09-19T12:20:09.429Z [info]: OPTIONS /v1/stores/?page=0&q= 204 0ms
+2024-09-19T12:20:09.470Z [info]: GET /v1/stores/?page=0&q= 200 6ms
+2024-09-19T12:20:13.107Z [info]: OPTIONS /validate 204 1ms
+2024-09-19T12:20:13.114Z [info]: POST /validate 200 2ms
+2024-09-19T12:20:13.209Z [info]: OPTIONS /v1/stores/?page=0&q= 204 0ms
+2024-09-19T12:20:13.229Z [info]: GET /v1/stores/?page=0&q= 200 7ms
+2024-09-19T12:20:18.655Z [info]: OPTIONS /validate 204 1ms
+2024-09-19T12:20:18.662Z [info]: POST /validate 200 3ms
+2024-09-19T12:20:18.781Z [info]: OPTIONS /v1/stores/?page=0&q= 204 1ms
+2024-09-19T12:20:18.821Z [info]: GET /v1/stores/?page=0&q= 200 8ms
+2024-09-19T12:20:29.064Z [info]: OPTIONS /validate 204 0ms
+2024-09-19T12:20:29.070Z [info]: POST /validate 200 3ms
+2024-09-19T12:20:29.116Z [info]: OPTIONS /v1/stores/?page=0&q= 204 1ms
+2024-09-19T12:20:29.126Z [info]: GET /v1/stores/?page=0&q= 200 7ms
